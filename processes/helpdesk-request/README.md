@@ -23,7 +23,7 @@ The client launches a request \(called a support ticket\) in order to describe t
 
 ### Examples of value-added integration
 
-* Databinding of form drop-down lists to IT resource management applications or global lists managed in WorkflowGen in order to gather information on the requester’s hardware\/software configurations.
+* Databinding of form drop-down lists to IT resource management applications or global lists managed in WorkflowGen in order to gather information on the requester’s hardware&#47;software configurations.
 * Knowledge base update via a system action at the end of the process.
 * Automatic launch of pre-filled support requests upon alerts from third-party applications.
 
