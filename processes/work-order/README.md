@@ -28,5 +28,3 @@ The requester, as the facilities management point of contact, launches a request
 
 Download this process and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
 
-[Download the process form and workflow](https://www.workflowgen.com/wp-content/uploads/2016/03/WORK_ORDERv1.xml_-1.zip)
-

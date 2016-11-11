@@ -29,5 +29,3 @@ Human Resources will validate the merits of the request, then verify that all el
 
 Download this process import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
 
-[Download the process form and workflow](https://www.workflowgen.com/wp-content/uploads/2016/03/STAFFING_REQUISITION_GROUPv1.xml_.zip)
-
