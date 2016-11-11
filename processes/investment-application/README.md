@@ -2,7 +2,7 @@
 
 The objective of this process is to manage and optimize the various steps in an investment application.
 
-The application is first completed by the Project Manager, including the type and amount of investment, impact on security\/environment\/working conditions, technical risk analysis, and consultations with vendors. The request is then validated by the other participants in turn. If the application is deemed critical, the initial request will be sent directly to the Site Administration participant, and if approved, to the Business Unit Director then the Group Director, thus bypassing intermediate participants in order to expedite processing.
+The application is first completed by the Project Manager, including the type and amount of investment, impact on security&#47;environment&#47;working conditions, technical risk analysis, and consultations with vendors. The request is then validated by the other participants in turn. If the application is deemed critical, the initial request will be sent directly to the Site Administration participant, and if approved, to the Business Unit Director then the Group Director, thus bypassing intermediate participants in order to expedite processing.
 
 **Participants involved**
 
