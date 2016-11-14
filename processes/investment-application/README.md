@@ -4,7 +4,7 @@ The objective of this process is to manage and optimize the various steps in an 
 
 The application is first completed by the Project Manager, including the type and amount of investment, impact on security&#47;environment&#47;working conditions, technical risk analysis, and consultations with vendors. The request is then validated by the other participants in turn. If the application is deemed critical, the initial request will be sent directly to the Site Administration participant, and if approved, to the Business Unit Director then the Group Director, thus bypassing intermediate participants in order to expedite processing.
 
-**Participants involved**
+### Participants involved
 
 * Project Manager
 * Site New Works
@@ -21,7 +21,7 @@ The application is first completed by the Project Manager, including the type an
 * Group CFO
 * Group Director
 
-**Benefits**
+### Benefits
 
 * Automation of activities, greatly reducing processing time while increasing responsiveness within the enterprise for new investment projects.
 * Ability to expedite processing of critical requests by bypassing intermediate participants.
@@ -29,12 +29,24 @@ The application is first completed by the Project Manager, including the type an
 * Management of risk analysis and vendor consultations, and access to records in case of audit.
 * Elaboration of personalized reports via the Advanced View function in WorkflowGen, providing immediate follow-up of requests and activities, along with instant generation of performance indicators allowing for better activity monitoring.
 
-**Examples of value-added integration**
+### Examples of value-added integration
 
 * Databinding of form drop-down lists to business applications, ERP, or global lists managed within WorkflowGen.
 * Automatic creation of a new ERP reference via a system action.
 
-**Download**
+### Screenshots
+![Investment application form 1](assets/investment-app-form-1.png)<br /><br />
+![Investment application form 2](assets/investment-app-form-2.png)<br /><br />
+![Investment application form 3](assets/investment-app-form-3.png)<br /><br />
+![Investment application form 4](assets/investment-app-form-4.png)<br /><br />
+![Investment application form 5](assets/investment-app-form-5.png)<br /><br />
+![Investment application form 6](assets/investment-app-form-6.png)<br /><br />
+![Investment application form 7](assets/investment-app-form-7.png)<br /><br />
+![Investment application form 8](assets/investment-app-form-8.png)<br /><br />
+![Investment application workflow](assets/investment-app-workflow.png)
 
-Download this process and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs. This process is also available with an Excel generation feature presented in [this article](https://www.workflowgen.com/kb/generate-excel-file-form-gridview/).
+
+### Download
+
+![Download this process](dist/investment-application-v1.xml.zip) and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs. This process is also available with an Excel generation feature presented in [this article](https://www.workflowgen.com/kb/generate-excel-file-form-gridview/).
 

@@ -25,7 +25,15 @@ Human Resources will validate the merits of the request, then verify that all el
 * Databinding of form drop-down lists with HR or ERP applications that manage the types of available employment contracts, profiles, job descriptions, employment terms, salary scales, employee lists in cases of replacement, etc. Drop-down lists are interlinked in order to guide the user in the determination of criteria for the new hire.
 * Once the staffing requisition is approved, WorkflowGen can automatically launch the process of job posting logistics, followed by the processing of candidate profiles and organizing interviews, culminating in candidate selection and drafting the employment contract.
 
+### Screenshots
+
+![Staffing requisition form 1](assets/staffing-requisition-form-1.png)<br /><br />
+![Staffing requisition form 2](assets/staffing-requisition-form-2.png)<br /><br />
+![Staffing requisition form 3](assets/staffing-requisition-form-3.png)<br /><br />
+![Staffing requisition form 4](assets/staffing-requisition-form-4.png)<br /><br />
+![Staffing requisition workflow](assets/staffing-requisition-workflow.png)
+
 ### Download
 
-Download this process import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
+![Download this process](dist/staffing-requisition-group-v1.xml.zip) and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
 

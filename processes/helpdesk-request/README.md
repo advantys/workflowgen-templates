@@ -27,7 +27,14 @@ The client launches a request \(called a support ticket\) in order to describe t
 * Knowledge base update via a system action at the end of the process.
 * Automatic launch of pre-filled support requests upon alerts from third-party applications.
 
+### Screenshots
+
+![Helpdesk form 1](assets/helpdesk-form-1.png)<br /><br />
+![Helpdesk form 2](assets/helpdesk-form-2.png)<br /><br />
+![Helpdesk form 3](assets/helpdesk-form-3.png)<br /><br />
+![Helpdesk workflow](assets/helpdesk-workflow.png)
+
 ### Download
 
-Download this process and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
+![Download this process](dist/helpdesk-v1.xml.zip) and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
 

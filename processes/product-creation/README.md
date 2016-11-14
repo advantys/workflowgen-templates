@@ -31,7 +31,15 @@ The Operations Department finalizes the request by confirming the anticipated la
 * Integration with planning tools.
 * Initiation of sub-processes \(independent or integrated\) in order to simplify the processing of components of a new product creation process that comprises numerous steps.
 
+### Screenshots
+
+![New product creation form 1](assets/new-prod-creation-form-1.png)<br /><br />
+![New product creation form 2](assets/new-prod-creation-form-2.png)<br /><br />
+![New product creation form 3](assets/new-prod-creation-form-3.png)<br /><br />
+![New product creation form 4](assets/new-prod-creation-form-4.png)<br /><br />
+![New product creation workflow](assets/new-prod-creation-workflow.png)
+
 ### Download
 
-Download this process and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
+![Download this process](dist/new-product-creation-v1.xml.zip) and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
 
