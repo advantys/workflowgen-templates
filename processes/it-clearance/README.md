@@ -32,11 +32,11 @@ The supervisor of the employee for whom the request is being made selects the ap
 * Expiry dates can be associated with accounts, allowing WorkflowGen to automatically launch user account extension or deletion processes.
 
 ### Screenshots
-![IT Clearance form 1](it-clearance/assets/it-clearance-form-1.png)
-![IT Clearance form 2](it-clearance/assets/it-clearance-form-2.png)
-![IT Clearance form 3](it-clearance/assets/it-clearance-form-3.png)
-![IT Clearance form 3](it-clearance/assets/it-clearance-form-4.png)
-![IT Clearance workflow](it-clearance/assets/it-clearance-workflow.png)
+![IT Clearance form 1](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-form-1.png)
+![IT Clearance form 2](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-form-2.png)
+![IT Clearance form 3](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-form-3.png)
+![IT Clearance form 3](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-form-4.png)
+![IT Clearance workflow](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/it-clearance-workflow.png)
 
 ### Download
 
