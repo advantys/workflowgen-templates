@@ -48,5 +48,5 @@ The application is first completed by the Project Manager, including the type an
 
 ### Download
 
-![Download this process](dist/investment-application-v1.xml.zip) and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs. This process is also available with an Excel generation feature presented in [this article](https://www.workflowgen.com/kb/generate-excel-file-form-gridview/).
+![Download this process](dist/investment-application-v1.xml.zip) and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs. This process is also available with an Excel generation feature presented in [this WorkflowGen Knowledge Base article](https://www.workflowgen.com/kb/generate-excel-file-form-gridview/).
 
