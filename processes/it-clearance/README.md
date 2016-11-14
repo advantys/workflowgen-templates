@@ -36,7 +36,7 @@ The supervisor of the employee for whom the request is being made selects the ap
 ![IT Clearance form 2](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-form-2.png)
 ![IT Clearance form 3](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-form-3.png)
 ![IT Clearance form 3](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-form-4.png)
-![IT Clearance workflow](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/it-clearance-workflow.png)
+![IT Clearance workflow](https://github.com/advantys/workflowgen-templates/blob/master/processes/it-clearance/assets/IT-clearance-workflow.png)
 
 ### Download
 
