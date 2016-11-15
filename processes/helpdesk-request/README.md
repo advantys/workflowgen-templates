@@ -27,12 +27,16 @@ The client launches a request \(called a support ticket\) in order to describe t
 * Knowledge base update via a system action at the end of the process.
 * Automatic launch of pre-filled support requests upon alerts from third-party applications.
 
-### Screenshots
+### Workflow
+
+![Helpdesk workflow](assets/helpdesk-workflow.png)
+
+### Form
 
 ![Helpdesk form 1](assets/helpdesk-form-1.png)<br /><br />
 ![Helpdesk form 2](assets/helpdesk-form-2.png)<br /><br />
-![Helpdesk form 3](assets/helpdesk-form-3.png)<br /><br />
-![Helpdesk workflow](assets/helpdesk-workflow.png)
+![Helpdesk form 3](assets/helpdesk-form-3.png)
+
 
 ### Download
 
