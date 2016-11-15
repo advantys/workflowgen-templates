@@ -24,12 +24,17 @@ The requester, as the facilities management point of contact, launches a request
 * Linking of WorkflowGen to GPS services to assign tasks to technicians based on their current locations.
 * Workflow launching by a requester in the field, with the ability to attach a picture taken with a mobile device in order to demonstrate the need for work or repair.
 
-### Screenshots
+
+### Workflow
+
+![Work order workflow](assets/work-order-workflow.png)
+
+### Form
 
 ![Work order form 1](assets/work-order-form-1.png)<br /><br />
 ![Work order form 2](assets/work-order-form-2.png)<br /><br />
-![Work order form 3](assets/work-order-form-3.png)<br /><br />
-![Work order workflow](assets/work-order-workflow.png)
+![Work order form 3](assets/work-order-form-3.png)
+
 
 ### Download
 

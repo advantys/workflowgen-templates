@@ -31,13 +31,18 @@ The Operations Department finalizes the request by confirming the anticipated la
 * Integration with planning tools.
 * Initiation of sub-processes \(independent or integrated\) in order to simplify the processing of components of a new product creation process that comprises numerous steps.
 
-### Screenshots
+
+### Workflow
+
+![New product creation workflow](assets/new-prod-creation-workflow.png)
+
+### Form
 
 ![New product creation form 1](assets/new-prod-creation-form-1.png)<br /><br />
 ![New product creation form 2](assets/new-prod-creation-form-2.png)<br /><br />
 ![New product creation form 3](assets/new-prod-creation-form-3.png)<br /><br />
-![New product creation form 4](assets/new-prod-creation-form-4.png)<br /><br />
-![New product creation workflow](assets/new-prod-creation-workflow.png)
+![New product creation form 4](assets/new-prod-creation-form-4.png)
+
 
 ### Download
 

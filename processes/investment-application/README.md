@@ -34,7 +34,10 @@ The application is first completed by the Project Manager, including the type an
 * Databinding of form drop-down lists to business applications, ERP, or global lists managed within WorkflowGen.
 * Automatic creation of a new ERP reference via a system action.
 
-### Screenshots
+### Workflow
+![Investment application workflow](assets/investment-app-workflow.png)
+
+### Form
 ![Investment application form 1](assets/investment-app-form-1.png)<br /><br />
 ![Investment application form 2](assets/investment-app-form-2.png)<br /><br />
 ![Investment application form 3](assets/investment-app-form-3.png)<br /><br />
@@ -42,8 +45,8 @@ The application is first completed by the Project Manager, including the type an
 ![Investment application form 5](assets/investment-app-form-5.png)<br /><br />
 ![Investment application form 6](assets/investment-app-form-6.png)<br /><br />
 ![Investment application form 7](assets/investment-app-form-7.png)<br /><br />
-![Investment application form 8](assets/investment-app-form-8.png)<br /><br />
-![Investment application workflow](assets/investment-app-workflow.png)
+![Investment application form 8](assets/investment-app-form-8.png)
+
 
 
 ### Download

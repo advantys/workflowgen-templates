@@ -31,12 +31,17 @@ The supervisor of the employee for whom the request is being made selects the ap
 * IT Clearance requests can be incorporated as sub-processes of new employee management processes.
 * Expiry dates can be associated with accounts, allowing WorkflowGen to automatically launch user account extension or deletion processes.
 
-### Screenshots
+
+### Workflow
+
+![IT Clearance workflow](assets/IT-clearance-workflow.png)
+
+### Form
 ![IT Clearance form 1](assets/IT-clearance-form-1.png)<br /><br />
 ![IT Clearance form 2](assets/IT-clearance-form-2.png)<br /><br />
 ![IT Clearance form 3](assets/IT-clearance-form-3.png)<br /><br />
-![IT Clearance form 3](assets/IT-clearance-form-4.png)<br /><br />
-![IT Clearance workflow](assets/IT-clearance-workflow.png)
+![IT Clearance form 3](assets/IT-clearance-form-4.png)
+
 
 ### Download
 
