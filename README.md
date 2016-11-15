@@ -8,35 +8,35 @@ You can download process templates and try them out for yourself to see how Work
 
 The objective of this process is to manage and optimize the various steps in an investment application. [More...](processes/investment-application)
 
-![Investment application workflow](assets/investment-app-workflow.png)
+![Investment application workflow](processes/investment-application/assets/investment-app-workflow.png)
 
 ## Staffing Requisition
 
 The objective of this process is to dematerialize and optimize the management of staffing requisitions. This is the first part of a series of processes that can be linked, leading to the hiring of a new employee. [More...](processes/staffing-requisition)
 
-![Staffing requisition workflow](assets/staffing-requisition-workflow.png)
+![Staffing requisition workflow](processes/staffing-requisition/assets/staffing-requisition-workflow.png)
 
 ## New Product Creation
 
 The objective of this process is to manage and optimize the various steps in the creation of a new product. [More...](processes/product-creation)
 
-![New product creation workflow](assets/new-prod-creation-workflow.png)
+![New product creation workflow](processes/product-creation/assets/new-prod-creation-workflow.png)
 
 ## Helpdesk Request
 
 The objective of this process is to manage and optimize the handling, processing, and resolution of IT Helpdesk requests from internal and external clients. [More...](processes/helpdesk-request)
 
-![Helpdesk workflow](assets/helpdesk-workflow.png)
+![Helpdesk workflow](processes/helpdesk-request/assets/helpdesk-workflow.png)
 
 ## Work Order
 
 The objective of this process is to manage and optimize works and repairs in company buildings and facilities, academic campuses, and geographic areas managed by local governments. [More...](processes/work-order)
 
-![Work order workflow](assets/work-order-workflow.png)
+![Work order workflow](processes/work-order/assets/work-order-workflow.png)
 
 ## IT Clearance
 
 The objective of this process is to manage and optimize requests for IT clearance for applications managed by different departments within the company. [More...](processes/it-clearance)
 
-![IT Clearance workflow](assets/IT-clearance-workflow.png)
+![IT Clearance workflow](processes/it-clearance/assets/IT-clearance-workflow.png)
 
