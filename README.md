@@ -4,7 +4,7 @@ The [WorkflowGen](https://www.workflowgen.com/) workflow management software com
 
 You can download process templates and try them out for yourself to see how WorkflowGen can meet all of your business process needs with quick and easy customization and seamless integration.
 
-[Accéder à la bibliothèque de processus en Français](https://github.com/advantys/workflowgen-templates/tree/master/fr/README.md)
+[Accéder à la bibliothèque de processus en Français](fr)
 
 ## Investment Application
 
