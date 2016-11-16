@@ -4,6 +4,8 @@ The [WorkflowGen](https://www.workflowgen.com/) workflow management software com
 
 You can download process templates and try them out for yourself to see how WorkflowGen can meet all of your business process needs with quick and easy customization and seamless integration.
 
+[Accéder à la bibliothèque de processus en Français](workflowgen-templates/fr/README.md)
+
 ## Investment Application
 
 The objective of this process is to manage and optimize the various steps in an investment application.<br />
