@@ -30,6 +30,6 @@ L’objectif de ce processus est de gérer et d’optimiser les travaux et les r
 
 ## Demande d’habilitation informatique
 
-L’objectif de ce processus est d’optimiser le traitement des demandes d’habilitation informatique qui concernent plusieurs départements de l’entreprise. [Accéder à l’exemple de processus...](processus/habilitation-informatique/README.md)
+L’objectif de ce processus est d’optimiser le traitement des demandes d’habilitation informatique qui concernent plusieurs départements de l’entreprise. [Accéder à l’exemple de processus...](processus/demande-habilitation-informatique/README.md)
 
 ![Workflow Demande d’habilitation informatique](processus/demande-habilitation-informatique/assets/habilitation-informatique-workflow.png)
