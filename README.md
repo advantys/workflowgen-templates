@@ -2,7 +2,7 @@
 
 The [WorkflowGen](https://www.workflowgen.com/) workflow management software comes with built-in, ready-to-use business process templates that you can easily customize to meet your needs and put into production in no time. The following templates provide additional examples of processes, including their objectives, the participants involved in the workflow, the expected benefits to your organization, and examples of value-added integration.
 
-You can download process templates and try them out for yourself to see how WorkflowGen can meet all of your business process needs with quick and easy customization and seamless integration. If you have not already installed WorkflowGen, simply request a free trial version.
+You can download process templates and try them out for yourself to see how WorkflowGen can meet all of your business process needs with quick and easy customization and seamless integration.
 
 ## Investment Application
 

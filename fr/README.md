@@ -2,7 +2,7 @@
 
 [WorkflowGen](https://www.workflowgen.com/fr) est fourni avec des exemples de processus clés-en-main intégrés que vous pouvez facilement personnaliser selon vos besoins et mettre en production en un clin d’œil. La bibliothèque suivante contient d’autres exemples de processus avec pour chacun d’eux les objectifs, les participants impliqués dans le workflow, les bénéfices attendus et des exemples d’intégrations à valeur ajoutée.
 
-Vous pouvez télécharger les exemples de processus et les tester afin de voir comment WorkflowGen peut répondre à vos besoins d’automatisation de processus métiers avec une personnalisation rapide et facile et une intégration transparente. Si vous n’avez pas encore installé WorkflowGen, vous pouvez tout simplement demander une version d’évaluation gratuite.
+Vous pouvez télécharger les exemples de processus et les tester afin de voir comment WorkflowGen peut répondre à vos besoins d’automatisation de processus métiers avec une personnalisation rapide et facile et une intégration transparente.
 
 ## Demande de personnel
 
