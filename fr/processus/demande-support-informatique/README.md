@@ -1,44 +1,43 @@
-# Helpdesk Request
+# Demande de support informatique
 
-The objective of this process is to manage and optimize the handling, processing, and resolution of IT Helpdesk requests from internal and external clients.
+L’objectif de ce processus est de gérer et d’optimiser la prise en charge, le traitement et la résolution des demandes de support informatique des clients internes et externes.
 
-The client launches a request \(called a support ticket\) in order to describe the issue encountered at the software or hardware level, providing as much information as possible in order to facilitate comprehension of the problem and its potential cause. Level 1 Support classifies the ticket and decides which actions to take next; this could be a request for further information from the requester, initiation of a call or remote session, sending a solution, or escalation to Level 2 Support. Once the IT Helpdesk’s reply or solution has adequately resolved the issue, the ticket is closed.
+Le client lance une demande \(un « ticket » de support\) et décrit le problème survenu au niveau logiciel, applicatif ou matériel en fournissant autant d’informations que possible afin de faciliter la compréhension du problème et la cause potentielle. Le support de niveau 1 qualifie le ticket et détermine quelles mesures sont à prendre, telles qu’une demande d’informations complémentaires au demandeur, l’initiation d’un appel ou d’une session distante, l’envoi d’une solution, ou une escalade au support de niveau 2. Une fois que l’équipe de support aura résolu le problème, le ticket sera fermé.
 
-### Participants involved
+### Participants impliqués
 
-* Requester
-* Level 1 Support
-* Level 2 Support
-* Supervisor
+* Demandeur
+* Support de niveau 1
+* Support de niveau 2
+* Superviseur
 
-### Benefits
+### Bénéfices
 
-* Real-time requester tracking of support ticket handling and processing.
-* Improved quality of service and reduced handling and resolution time for support tickets.
-* Self-service support team action assignment and handling by the first available person.
-* Classification of the ticket at the first level and escalation to the second level if necessary optimizes the utilization of expertise required to resolve the issue.
-* Application of support standards and best practices \(e.g. ITIL\).
-* Leveraging of ticket resolutions for similar problems through pre-filled fields or drop-downs and knowledge base search.
-* Exploitation of WorkflowGen’s integrated follow-up and reporting functions by support team supervisors to efficiently coordinate the handling of tickets.
+* Suivi du ticket de support par le demandeur en temps réel.
+* Qualité de service améliorée, délais de traitement des résolutions des tickets de support réduits.
+* Affectation et traitement des actions d’équipe en mode « self-service » par le premier préposé disponible.
+* La catégorisation du ticket par le premier niveau de support et l’escalade au deuxième niveau si nécessaire, optimise l’utilisation d’expertise requise pour résoudre le problème.
+* Application des standards et des meilleures pratiques de support (ex. : ITIL).
+* Tirer avantage des résolutions des tickets pour les problèmes similaires via des champs et listes déroulantes préremplis, et recherche dans la base de connaissances.
+* Exploitation des fonctionnalités de suivi et de rapport intégrées de WorkflowGen par les superviseurs des équipes de support afin de coordonner le traitement des tickets.
 
-### Examples of value-added integration
+### Exemples d’intégrations à valeur ajoutée
 
-* Databinding of form drop-down lists to IT resource management applications or global lists managed in WorkflowGen in order to gather information on the requester’s hardware&#47;software configurations.
-* Knowledge base update via a system action at the end of the process.
-* Automatic launch of pre-filled support requests upon alerts from third-party applications.
+* Liaison des données depuis les listes déroulantes du formulaire aux applications de gestion des ressources informatiques ou aux listes globales gérées dans WorkflowGen afin de recueillir les informations sur les configurations logicielles et matérielles du demandeur.
+* Mise à jour de la base de connaissances via une action système à la fin du processus.
+* Lancement automatique de demandes de support préremplis provenant d’alertes d’applications tierces.
 
 ### Workflow
 
-![Helpdesk workflow](assets/helpdesk-workflow.png)
+![Workflow support informatique](assets/demande-support-informatique-workflow.png)
 
-### Form
+### Formulaire
 
-![Helpdesk form 1](assets/helpdesk-form-1.png)<br /><br />
-![Helpdesk form 2](assets/helpdesk-form-2.png)<br /><br />
-![Helpdesk form 3](assets/helpdesk-form-3.png)
+![Formulaire support informatique 1](assets/demande-support-informatique-form-1.png)<br /><br />
+![Formulaire support informatique 2](assets/demande-support-informatique-form-2.png)<br /><br />
+![Formulaire support informatique 3](assets/demande-support-informatique-form-3.png)
 
 
-### Download
+### Télécharger
 
-[Download this process](dist/helpdesk-v1.xml.zip) and import it into your existing WorkflowGen environment or simply request a free trial version \(on-premise or hosted\). Run the process as-is or fully customize the form as well as the workflow definition to meet your specific needs.
-
+[Téléchargez ce processus](dist/demande-support-informatiquev1.xml.zip) et importez-le dans votre environnement WorkflowGen existant, ou [téléchargez la version gratuite de WorkflowGen](https://www.workflowgen.com/fr/telecharger-logiciel-workflow-gratuit/) et déployez le processus pour un nombre illimité d’utilisateurs. Exécutez le processus tel quel ou personnalisez le formulaire ainsi que la définition du workflow selon vos besoins spécifiques.
