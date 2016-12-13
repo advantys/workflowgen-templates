@@ -18,39 +18,39 @@ The objective of this process is to manage and optimize the various steps in an 
 
 The objective of this process is to dematerialize and optimize the management of staffing requisitions. This is the first part of a series of processes that can be linked, leading to the hiring of a new employee.<br />
 
-[Access the process template](/staffing-requisition/README.md)
+[Access the process template](staffing-requisition/README.md)
 
-![Staffing requisition workflow](/staffing-requisition/assets/staffing-requisition-workflow.png)
+![Staffing requisition workflow](staffing-requisition/assets/staffing-requisition-workflow.png)
 
 ## New Product Creation
 
 The objective of this process is to manage and optimize the various steps in the creation of a new product.<br />
 
-[Access the process template](/product-creation/README.md)
+[Access the process template](product-creation/README.md)
 
-![New product creation workflow](/product-creation/assets/new-prod-creation-workflow.png)
+![New product creation workflow](product-creation/assets/new-prod-creation-workflow.png)
 
 ## Helpdesk Request
 
 The objective of this process is to manage and optimize the handling, processing, and resolution of IT Helpdesk requests from internal and external clients.<br />
 
-[Access the process template](/helpdesk-request/README.md)
+[Access the process template](helpdesk-request/README.md)
 
-![Helpdesk workflow](/helpdesk-request/assets/helpdesk-workflow.png)
+![Helpdesk workflow](helpdesk-request/assets/helpdesk-workflow.png)
 
 ## Work Order
 
 The objective of this process is to manage and optimize works and repairs in company buildings and facilities, academic campuses, and geographic areas managed by local governments.<br />
 
-[Access the process template](/work-order/README.md)
+[Access the process template](work-order/README.md)
 
-![Work order workflow](/work-order/assets/work-order-workflow.png)
+![Work order workflow](work-order/assets/work-order-workflow.png)
 
 ## IT Clearance
 
 The objective of this process is to manage and optimize requests for IT clearance for applications managed by different departments within the company.<br />
 
-[Access the process template](/it-clearance/README.md)
+[Access the process template](it-clearance/README.md)
 
-![IT Clearance workflow](/it-clearance/assets/IT-clearance-workflow.png)
+![IT Clearance workflow](it-clearance/assets/IT-clearance-workflow.png)
 
