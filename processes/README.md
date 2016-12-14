@@ -4,6 +4,8 @@ The [WorkflowGen](https://www.workflowgen.com/) workflow management software com
 
 [Access the business process template library](en)
 
+# Bibliothèque de processus
+
 [WorkflowGen](https://www.workflowgen.com/fr) est fourni avec des exemples de processus clés-en-main intégrés que vous pouvez facilement personnaliser selon vos besoins et mettre en production en un clin d’œil.
 
 [Accéder à la bibliothèque de processus](fr)
