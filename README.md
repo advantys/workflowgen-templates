@@ -4,3 +4,4 @@ The [WorkflowGen](https://www.workflowgen.com/) workflow management software com
 
 [Access the business process template library](/processes/en)
 
+![IT Clearance workflow](/processes/en/it-clearance/assets/IT-clearance-workflow.png)
