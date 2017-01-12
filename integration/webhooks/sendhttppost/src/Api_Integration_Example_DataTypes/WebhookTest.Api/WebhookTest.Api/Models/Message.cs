@@ -7,7 +7,7 @@ namespace WebhookTest.Api.Models
 {
     public class Message
     {
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public int Number { get; set; }
         public string Name { get; set; }
         public string TOKEN { get; set; }

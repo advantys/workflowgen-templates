@@ -7,6 +7,6 @@ namespace WebhookTest.Api.Models
 {
     public class PayloadObject
     {
-        public string Payload { get; set; }
+        public string payload { get; set; }
     }
 }

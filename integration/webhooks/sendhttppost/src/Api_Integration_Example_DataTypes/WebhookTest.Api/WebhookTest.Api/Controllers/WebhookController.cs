@@ -15,18 +15,6 @@ namespace WebhookTest.Api.Controllers
     public class WebhookController : ApiController
     {
 
-        // GET: api/Webhook
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Webhook/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST: api/Webhook
         [HttpPost]
         public IHttpActionResult Post([FromBody]Message message)
@@ -34,7 +22,7 @@ namespace WebhookTest.Api.Controllers
             //    if (some validation)
             //        return BadRequest();
 
-            DateTime date = message.Date;
+            DateTime date = DateTime.Parse((message.Date).Replace("Z",string.Empty));
             string name = message.Name;
             int number = message.Number;
             string token = message.TOKEN;
@@ -64,7 +52,7 @@ namespace WebhookTest.Api.Controllers
             //    return BadRequest();
 
             byte[] parameters = null;
-            parameters = HttpUtility.UrlDecodeToBytes(message.Payload);
+            parameters = HttpUtility.UrlDecodeToBytes(message.payload);
             string name = null;
             DateTime date = default(DateTime);
             int number = 0;
@@ -76,17 +64,17 @@ namespace WebhookTest.Api.Controllers
 
             if (PayloadParameters.ContainsKey("TOKEN") && System.Configuration.ConfigurationManager.AppSettings["token"] == PayloadParameters["TOKEN"])
             {
-                if (PayloadParameters.ContainsKey("NAME"))
+                if (PayloadParameters.ContainsKey("Name"))
                 {
-                   name  = PayloadParameters["NAME"];
+                   name  = PayloadParameters["Name"];
                 }
-                if (PayloadParameters.ContainsKey("DATE"))
+                if (PayloadParameters.ContainsKey("Date"))
                 {
-                    date = Convert.ToDateTime(PayloadParameters["DATE"]);
+                    date = Convert.ToDateTime(PayloadParameters["Date"]);
                 }
-                if (PayloadParameters.ContainsKey("NUMBER"))
+                if (PayloadParameters.ContainsKey("Number"))
                 {
-                    number = Convert.ToInt32(PayloadParameters["NUMBER"]);
+                    number = Convert.ToInt32(PayloadParameters["Number"]);
                 }
 
                 Response response = new Response
@@ -105,14 +93,5 @@ namespace WebhookTest.Api.Controllers
 
         }
 
-        // PUT: api/Webhook/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Webhook/5
-        public void Delete(int id)
-        {
-        }
     }
 }
