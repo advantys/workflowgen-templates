@@ -53,7 +53,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
 4. Build the URL using **[API base URL]/api/webhook/Post** if you want to send your payload using the application/json content type, or **[API base URL]/api/webhook/PostWithPayload** if you want to use the application/x-www-form-urlencoded content type.
 
- [BROWSER IMAGE CONTAINING URL]
+ ![Browser URL](assets/browser_url_720.png)
 
  For example, if you want to test the DataTypes API, your URL field would be as follows: 
 
@@ -63,6 +63,8 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
 5. **Token:** Both sample APIs require tokens for authentication. You can get the token value from the web.config file contained in each solution.
 
+ ![Token value in web.config](assets/token_value_in_web_config_720.png)
+
 6. **Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
 
 7. **Object example:** For the Object example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
@@ -71,7 +73,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
 9. Click the **Submit** button. You will get a results page like the following:
 
- [RESULTS PAGE SCREENSHOT]
+ ![Results page](assets/result_page_screenshot_720.png)
 
 <a id="troubleshooting"></a>
 ###Troubleshooting
