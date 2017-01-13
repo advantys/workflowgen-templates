@@ -9,7 +9,7 @@
 - [Test execution](#test-execution)
 - [Troubleshooting](#troubleshooting)
 
-<a id="introduction"></a>
+<a name"introduction"></a>
 ###Introduction
 
 The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow application lets users send outgoing webhooks (HTTP post requests) to external systems. These examples will show you how the application performs when sending all supported data types, as well as how to use nested-level parameters to send and receive information from external sources.
@@ -20,12 +20,12 @@ The [Webhooks_Integration/Example_Objects](src/Webhooks_Integration_Example_Obje
 
 For more information on SENDHTTPPOST, see the **SENDHTTPPOST workflow application** section in the **WorkflowGen Administration Module Reference Guide**, available on the [WorkflowGen Documentation](https://www.workflowgen.com/resources/documentation/) page.
 
-<a id="requirements"></a>
+<a name="requirements"></a>
 ###Requirements
 
 These examples require that you have the SENDHTTPPOST application installed in your WorkflowGen environment (available as of version 6.6.0), and Visual Studio to open and run the solutions.
 
-<a id="installation"></a>
+<a name="installation"></a>
 ###Installation
 
 1. Download the Webhooks_Integration folder from GitHub.
@@ -37,12 +37,12 @@ These examples require that you have the SENDHTTPPOST application installed in y
 
 4. You can also publish your API in IIS (this step is optional). If you do this, you don't need the API running in Visual Studio while testing.
 
-<a id="configuration">
+<a name="configuration">
 ###Configuration
 
 In the WorkflowGen Administration Module home page, click the **New process** button and import the *.xml file that corresponds to the test project (contained in the [LOCAL PATH]\Webhooks_Integration\[SELECTED EXAMPLE FOLDER]).
 
-<a id="test-execution"></a>
+<a name="test-execution"></a>
 ###Test execution
 
 1. Click the process's link on the home page.
@@ -75,7 +75,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  ![Results page](assets/result_page_screenshot_720.png)
 
-<a id="troubleshooting"></a>
+<a name="troubleshooting"></a>
 ###Troubleshooting
 
 If the test results page shows 401 as a Response status value, this means that the token provided is wrong, or you didn't provide a token value in the form. Check your token value (contained in the API web.config file) and enter it in the Token text box in the form.
