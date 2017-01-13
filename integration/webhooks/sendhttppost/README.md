@@ -25,7 +25,7 @@ For more information on SENDHTTPPOST, see the **SENDHTTPPOST workflow applicatio
 
 These examples require that you have the SENDHTTPPOST application installed in your WorkflowGen environment (available as of version 6.6.0), and Visual Studio to open and run the solutions.
 
-<a name="installation"></a>
+<a id="installation"></a>
 ###Installation
 
 1. Download the Webhooks_Integration folder from GitHub.
