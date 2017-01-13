@@ -32,8 +32,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 
 2. Open the folder from the local path where you saved it, choose the example (DataTypes or Objects) that you want to test, then open the *.sln file in Visual Studio.
 
-3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a tab in an already-open browser, and will display a page like the following:
-[API PAGE IMAGE SCREENSHOT]
+3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message.
 
 4. You can also publish your API in IIS (this step is optional). If you do this, you don't need the API running in Visual Studio while testing.
 
