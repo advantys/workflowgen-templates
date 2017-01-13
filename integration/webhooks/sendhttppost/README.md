@@ -14,9 +14,9 @@
 
 The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow application lets users send outgoing webhooks (HTTP post requests) to external systems. These examples will show you how the application performs when sending all supported data types, as well as how to use nested-level parameters to send and receive information from external sources.
 
-The [Webhooks_Integration_Example_DataTypes](/src/Api_Integration_Example_DataTypes/) folder contains an example of an API that sends and receives JSON or URLENCODED payloads containing text, numeric, and datetime type data, processes them, and sends back a payload containing the three data types.
+The [Webhooks_Integration_Example_DataTypes](src/Api_Integration_Example_DataTypes/) folder contains an example of an API that sends and receives JSON or URLENCODED payloads containing text, numeric, and datetime type data, processes them, and sends back a payload containing the three data types.
 
-The [Webhooks_Integration/Example_Objects](/src/Api_Integration_Example_Objects/) folder contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON.
+The [Webhooks_Integration/Example_Objects](src/Api_Integration_Example_Objects/) folder contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON.
 
 For more information on SENDHTTPPOST, see the **SENDHTTPPOST workflow application** section in the **WorkflowGen Administration Module Reference Guide**, available on the [WorkflowGen Documentation](https://www.workflowgen.com/resources/documentation/) page.
 
