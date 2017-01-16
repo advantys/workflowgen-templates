@@ -16,7 +16,7 @@ The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow applicatio
 
 The [Webhooks_Integration_Example_DataTypes](src/Webhooks_Integration_Example_DataTypes/) folder contains an example of an API that sends and receives JSON or URLENCODED payloads containing text, numeric, and datetime type data, processes them, and sends back a payload containing the three data types.
 
-The [Webhooks_Integration/Example_Objects](src/Webhooks_Integration_Example_Objects/) folder contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON.
+The [Webhooks_Integration_Example_Objects](src/Webhooks_Integration_Example_Objects/) folder contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON.
 
 For more information on SENDHTTPPOST, see the **SENDHTTPPOST workflow application** section in the **WorkflowGen Administration Module Reference Guide**, available on the [WorkflowGen Documentation](https://www.workflowgen.com/resources/documentation/) page.
 
@@ -28,9 +28,9 @@ These examples require that you have the SENDHTTPPOST application installed in y
 <a id="installation"></a>
 ###Installation
 
-1. Download the Webhooks_Integration folder from GitHub.
+1. Download the [Webhooks_Integration_Example_Objects] and [Webhooks_Integration_Example_DataTypes] folders from GitHub.
 
-2. Open the folder from the local path where you saved it, choose the example (DataTypes or Objects) that you want to test, then open the *.sln file in Visual Studio.
+2. Open the folder related to the example (DataTypes or Objects) that you want to test from the local path where you saved it,then open the *.sln file in Visual Studio.
 
 3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message.
 
@@ -39,7 +39,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 <a id="configuration">
 ###Configuration
 
-In the WorkflowGen Administration Module home page, click the **New process** button and import the *.xml file that corresponds to the test project (contained in the [LOCAL PATH]\Webhooks_Integration\[SELECTED EXAMPLE FOLDER]).
+In the WorkflowGen Administration Module home page, click the **New process** button and import the *.xml file that corresponds to the test project (contained in the [LOCAL PATH]\Webhooks_Integration_[SELECTED EXAMPLE]).
 
 <a id="test-execution"></a>
 ###Test execution
@@ -48,29 +48,31 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
 2. Click **Test** to start the process test.
 
-3. Fill in the form. **URL** should contain the running or published API base URL address (hostname:port number). The "/index.html" part is not required. You can get the URL from your browser.
+3. Fill in the form. 
 
-4. Build the URL using **[API base URL]/api/webhook/Post** if you want to send your payload using the application/json content type, or **[API base URL]/api/webhook/PostWithPayload** if you want to use the application/x-www-form-urlencoded content type.
+**URL** should contain the running or published API base URL address (hostname:port number). The "/index.html" part is not required. You can get the URL from your browser.
 
  ![Browser URL](assets/browser_url_720.png)
 
- For example, if you want to test the DataTypes API, your URL field would be as follows: 
+Build the URL using **[API base URL]/api/webhook/Post** if you want to send your payload using the application/json content type, or **[API base URL]/api/webhook/PostWithPayload** if you want to use the application/x-www-form-urlencoded content type.
+ 
+For example, if you want to test the DataTypes API, your URL field would be as follows: 
 
  - Content type: application/json: **http:<span></span>//localhost:65062/api/webhook/Post**
 
  - Content type: application/x-www-form-urlencoded: **http:<span></span>//localhost:65062/api/webhook/PostWithPayload**
 
-5. **Token:** Both sample APIs require tokens for authentication. You can get the token value from the web.config file contained in each solution.
+**Token:** Both sample APIs require tokens for authentication. You can get the token value from the web.config file contained in each solution.
 
  ![Token value in web.config](assets/token_value_in_web_config_720.png)
 
-6. **Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
+**Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
 
-7. **Object example:** For the Object example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
+**Object example:** For the Object example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
 
-8. **DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
+**DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
 
-9. Click the **Submit** button. You will get a results page like the following:
+4. Click the **Submit** button. You will get a results page like the following:
 
  ![Results page](assets/result_page_screenshot_720.png)
 
