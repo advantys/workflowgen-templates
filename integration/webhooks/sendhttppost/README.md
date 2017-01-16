@@ -30,7 +30,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 
 1. Download the [Webhooks_Integration_Example_Objects] and [Webhooks_Integration_Example_DataTypes] folders from GitHub.
 
-2. Open the folder related to the example (DataTypes or Objects) that you want to test from the local path where you saved it,then open the *.sln file in Visual Studio.
+2. Open the folder related to the example (DataTypes or Objects) that you want to test from the local path where you saved it, then open the *.sln file in Visual Studio.
 
 3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message.
 
