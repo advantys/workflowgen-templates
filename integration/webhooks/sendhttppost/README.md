@@ -36,7 +36,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 
  Alternately, you can publish your API in IIS. If you do this, you don't need the API running in Visual Studio while testing.
 
- Be sure to take note of the hostname and the port number generated for the example because they will be used in the next steps.
+ Be sure to take note of the hostname and the port number for the example because they will be used in the next steps.
 
 <a id="configuration">
 ###Configuration
