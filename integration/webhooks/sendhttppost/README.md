@@ -34,7 +34,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 
 3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message. Take note of the hostname and the port number generated for the example because they will be used in the next steps.
 
-4. You can also publish your API in IIS (this step is optional). If you do this, you don't need the API running in Visual Studio while testing.
+ Alternately, you can publish your API in IIS. If you do this, you don't need the API running in Visual Studio while testing.
 
 <a id="configuration">
 ###Configuration
