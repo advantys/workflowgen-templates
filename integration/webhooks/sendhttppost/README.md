@@ -74,7 +74,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  **Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
 
- **Objects example:** For the Objects example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
+ **Objects example:** For the Objects example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZIPCode** text boxes with the corresponding name, age, street, and zip code values.
 
  **DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
 
