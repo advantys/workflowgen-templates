@@ -28,9 +28,10 @@ These examples require that you have the SENDHTTPPOST application installed in y
 <a id="installation"></a>
 ###Installation
 
-1. Download the [Webhooks_Integration_Example_Objects] and [Webhooks_Integration_Example_DataTypes] folders from GitHub.
+1. Download [Webhook_Integration_Objects_Example.zip](samples/Webhook_Integration_Objects_Example.zip) or [Webhooks_Integration_Example_DataTypes.zip](samples/Webhooks_Integration_DataTypes_Example.zip) and unzip it. Alternately, you can clone the workflowgen-templates repository and navigate to the **Webhooks_Integration_Objects_Example/** or the **Webhooks_Integration_DataTypes_Example** folder, where the *.sln file is located.
 
-2. Open the folder related to the example (**DataTypes** or **Objects**) that you want to test from the local path where you saved it, then open the *.sln file in Visual Studio.
+
+2. Open the *.sln file in Visual Studio.
 
 3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message. 
 
@@ -63,7 +64,13 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  **Token:** Both sample APIs require tokens for authentication. You can get the token value from the web.config file contained in each solution.
 
- ![Token value in web.config](assets/token_value_in_web_config_720.png)
+ ```
+ <configuration>
+ 	<appSettings>
+ 		<add key="token" value="VmmUi6GD8C/Ss2o5VEdQ/XCilZGyKowGHWQSMOMJgroK">
+ 	</appSettings>
+ </configuration>
+ ```
 
  **Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
 
