@@ -42,7 +42,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 <a id="configuration">
 ###Configuration
 
-In the WorkflowGen Administration Module home page, click the **New process** button and import the *.xml file that corresponds to the test project (contained in the [LOCAL PATH]\Webhooks_Integration_[SELECTED EXAMPLE]).
+In the WorkflowGen Administration Module home page, click the **New process** button and import the *.xml file that corresponds to the test project (contained in the [LOCAL PATH]\Webhook_Integration_[SELECTED EXAMPLE] folder).
 
 <a id="test-execution"></a>
 ###Test execution
