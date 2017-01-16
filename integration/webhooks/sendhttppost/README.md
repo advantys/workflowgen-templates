@@ -16,7 +16,7 @@ The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow applicatio
 
 The [Webhooks_Integration_Example_DataTypes](src/Webhooks_Integration_Example_DataTypes/) folder contains an example of an API that sends and receives JSON or URLENCODED payloads containing text, numeric, and datetime type data, processes them, and sends back a payload containing the three data types.
 
-The [Webhooks_Integration_Example_Objects](src/Webhooks_Integration_Example_Objects/) folder contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON.
+The [Webhooks_Integration_Example_Objects](src/Webhooks_Integration_Example_Objects/) folder contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON. There is no limit to the number of levels in the nested JSON.
 
 For more information on SENDHTTPPOST, see the **SENDHTTPPOST workflow application** section in the **WorkflowGen Administration Module Reference Guide**, available on the [WorkflowGen Documentation](https://www.workflowgen.com/resources/documentation/) page.
 
@@ -75,6 +75,8 @@ For example, if you want to test the DataTypes API, your URL field would be as f
 4. Click the **Submit** button. You will get a results page like the following:
 
  ![Results page](assets/result_page_screenshot_720.png)
+
+ In the case of the Object example, you can also receive a nested JSON containing object properties (e.g. Person.Name, Person.Address.City). The DataTypes example can receive OUT parameters from all supported data types (Text, Numeric, and DateTime)
 
 <a name="troubleshooting"></a>
 ###Troubleshooting
