@@ -32,7 +32,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 
 2. Open the folder related to the example (**DataTypes** or **Objects**) that you want to test from the local path where you saved it, then open the *.sln file in Visual Studio.
 
-3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message.
+3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message. Take note of the hostname and the port number generated for the example because they will be used in the next steps.
 
 4. You can also publish your API in IIS (this step is optional). If you do this, you don't need the API running in Visual Studio while testing.
 
@@ -48,11 +48,8 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
 2. Click **Test** to start the process test.
 
-3. Fill in the form. 
+3. Fill in the form. **URL** should contain the running or published API base URL address (hostname:port number). You can get the URL from your browser.
 
- **URL** should contain the running or published API base URL address (hostname:port number). The "/index.html" part is not required. You can get the URL from your browser.
-
- ![Browser URL](assets/browser_url.png)
 
  Build the URL using **[API base URL]/api/webhook/Post** if you want to send your payload using the application/json content type, or **[API base URL]/api/webhook/PostWithPayload** if you want to use the application/x-www-form-urlencoded content type.
  
