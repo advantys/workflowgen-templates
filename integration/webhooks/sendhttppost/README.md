@@ -28,7 +28,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 <a id="installation"></a>
 ###Installation
 
-1. Download [Webhook_Integration_Objects_Example.zip](samples/Webhook_Integration_Objects_Example.zip) or [Webhooks_Integration_Example_DataTypes.zip](samples/Webhooks_Integration_DataTypes_Example.zip) and unzip it. Alternately, you can clone the workflowgen-templates repository and navigate to the **Webhooks_Integration_Objects_Example/** or the **Webhooks_Integration_DataTypes_Example** folder, where the *.sln file is located.
+1. Download [Webhook_Integration_Objects_Example.zip](samples/Webhook_Integration_Objects_Example.zip) or [Webhooks_Integration_Example_DataTypes.zip](samples/Webhooks_Integration_DataTypes_Example.zip) and unzip it. Alternately, you can clone the **workflowgen-templates** repository and navigate to the **Webhooks_Integration_Objects_Example** or the **Webhooks_Integration_DataTypes_Example** folder, where the *.sln file is located.
 
 
 2. Open the *.sln file in Visual Studio.
