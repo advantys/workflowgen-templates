@@ -52,7 +52,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  **URL** should contain the running or published API base URL address (hostname:port number). The "/index.html" part is not required. You can get the URL from your browser.
 
- ![Browser URL](assets/browser_url_720.png)
+ ![Browser URL](assets/browser_url.png)
 
  Build the URL using **[API base URL]/api/webhook/Post** if you want to send your payload using the application/json content type, or **[API base URL]/api/webhook/PostWithPayload** if you want to use the application/x-www-form-urlencoded content type.
  
