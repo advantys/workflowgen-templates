@@ -40,11 +40,11 @@ namespace WebhookTest.Api.Controllers
             {
 
                 Person p1 = new Person();
-                p1.Name = "Jane Doe";
+                p1.Name = "John";
                 p1.Age = 30;
                 Address p1Adress = new Address();
-                p1Adress.Zipcode = "H1K";
-                p1Adress.Street = "Saint Donat";
+                p1Adress.Zipcode = "XXX XXX";
+                p1Adress.Street = "Test Street";
 
                 p1.Adress = p1Adress;
              
