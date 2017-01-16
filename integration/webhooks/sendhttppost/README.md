@@ -50,29 +50,29 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
 3. Fill in the form. 
 
-**URL** should contain the running or published API base URL address (hostname:port number). The "/index.html" part is not required. You can get the URL from your browser.
+ **URL** should contain the running or published API base URL address (hostname:port number). The "/index.html" part is not required. You can get the URL from your browser.
 
  ![Browser URL](assets/browser_url_720.png)
 
-Build the URL using **[API base URL]/api/webhook/Post** if you want to send your payload using the application/json content type, or **[API base URL]/api/webhook/PostWithPayload** if you want to use the application/x-www-form-urlencoded content type.
+ Build the URL using **[API base URL]/api/webhook/Post** if you want to send your payload using the application/json content type, or **[API base URL]/api/webhook/PostWithPayload** if you want to use the application/x-www-form-urlencoded content type.
  
-For example, if you want to test the DataTypes API, your URL field would be as follows: 
+ For example, if you want to test the DataTypes API, your URL field would be as follows: 
 
- - Content type: application/json: **http:<span></span>//localhost:65062/api/webhook/Post**
+  - Content type: application/json: **http:<span></span>//localhost:65062/api/webhook/Post**
 
- - Content type: application/x-www-form-urlencoded: **http:<span></span>//localhost:65062/api/webhook/PostWithPayload**
+  - Content type: application/x-www-form-urlencoded: **http:<span></span>//localhost:65062/api/webhook/PostWithPayload**
 
-**Token:** Both sample APIs require tokens for authentication. You can get the token value from the web.config file contained in each solution.
+ **Token:** Both sample APIs require tokens for authentication. You can get the token value from the web.config file contained in each solution.
 
  ![Token value in web.config](assets/token_value_in_web_config_720.png)
 
-**Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
+ **Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
 
-**Object example:** For the Object example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
+ **Object example:** For the Object example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
 
-**DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
+ **DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
 
-4. Click the **Submit** button. You will get a results page like the following:
+ 4. Click the **Submit** button. You will get a results page like the following:
 
  ![Results page](assets/result_page_screenshot_720.png)
 
