@@ -30,7 +30,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 
 1. Download the [Webhooks_Integration_Example_Objects] and [Webhooks_Integration_Example_DataTypes] folders from GitHub.
 
-2. Open the folder related to the example (DataTypes or Objects) that you want to test from the local path where you saved it, then open the *.sln file in Visual Studio.
+2. Open the folder related to the example (**DataTypes** or **Objects**) that you want to test from the local path where you saved it, then open the *.sln file in Visual Studio.
 
 3. Run the solution in Visual Studio. This will open your default browser (or the browser you selected in Visual Studio to run the project) or open a new tab in an already-open browser, displaying an HTML page with a welcome message.
 
@@ -68,7 +68,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  **Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
 
- **Object example:** For the Object example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
+ **Objects example:** For the Objects example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZipCode** text boxes with the corresponding name, age, street, and zip code values.
 
  **DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
 
@@ -76,7 +76,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  ![Results page](assets/result_page_screenshot_720.png)
 
- In the case of the Object example, you can also receive a nested JSON containing object properties (e.g. Person.Name, Person.Address.City). The DataTypes example can receive OUT parameters from all supported data types (Text, Numeric, and DateTime)
+ In the case of the Objects example, you can also receive a nested JSON containing object properties (e.g. Person.Name, Person.Address.City). The DataTypes example can receive OUT parameters from all supported data types (Text, Numeric, and DateTime)
 
 <a name="troubleshooting"></a>
 ###Troubleshooting
