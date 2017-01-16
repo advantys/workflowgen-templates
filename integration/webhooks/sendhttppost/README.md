@@ -82,7 +82,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  ![Results page](assets/result_page.png)
 
- In the case of the Objects example, you can also receive a nested JSON containing object properties (e.g. Person.Name, Person.Address.City). The DataTypes example can receive OUT parameters from all supported data types (Text, Numeric, and DateTime)
+ In the case of the Objects example, you can also receive a nested JSON containing object properties (e.g. Person.Name, Person.Address.City). The DataTypes example can receive OUT parameters from all supported data types (Text, Numeric, and DateTime).
 
 <a name="troubleshooting"></a>
 ###Troubleshooting
