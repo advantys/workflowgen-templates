@@ -72,7 +72,7 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
 
  **DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
 
- 4. Click the **Submit** button. You will get a results page like the following:
+4. Click the **Submit** button. You will get a results page like the following:
 
  ![Results page](assets/result_page_screenshot_720.png)
 
