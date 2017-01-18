@@ -1,7 +1,11 @@
-# Business Process Template Library
+# WorkflowGen Templates and Samples
 
-The [WorkflowGen](https://www.workflowgen.com/) workflow management software comes with built-in, ready-to-use business process templates that you can easily customize to meet your needs and put into production in no time. 
+## Business Process Template Library
 
-[Access the business process template library](/processes/en)
 
-![IT Clearance workflow](/processes/en/it-clearance/assets/IT-clearance-workflow.png)
+
+[Access the business process template library](/processes)
+
+## SENDHTTPPOST Workflow Application Samples
+
+[Access the SENDHTTPPOST samples](/integration/webhooks/sendhttppost)
