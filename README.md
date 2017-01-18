@@ -9,4 +9,3 @@
 ## SENDHTTPPOST Workflow Application Samples
 
 [Access the SENDHTTPPOST samples](/integration/webhooks/sendhttppost)
-
