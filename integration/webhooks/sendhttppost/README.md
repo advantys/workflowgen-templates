@@ -58,42 +58,42 @@ In the WorkflowGen Administration Module home page, click the **New process** bu
  
  For example, if you want to test the DataTypes API, your URL field would be as follows: 
 
-  - Content type: application/json: **http:<span></span>//localhost:65062/api/webhook/Post**
+  - Content type: application/json: `http://localhost:65062/api/webhook/Post`
 
-  - Content type: application/x-www-form-urlencoded: **http:<span></span>//localhost:65062/api/webhook/PostWithPayload**
+  - Content type: application/x-www-form-urlencoded: `http://localhost:65062/api/webhook/PostWithPayload`
 
  **Token:** Both sample APIs require tokens for authentication. You can get the token value from the web.config file contained in each solution.
 
  ```
  <configuration>
  	<appSettings>
- 		<add key="token" value="VmmUi6GD8C/Ss2o5VEdQ/XCilZGyKowGHWQSMOMJgroK">
+ 		<add key="token" value="VmmUi6GD8C/Ss2o5VEdQ/XCilZGyKowGHWQSMOMJgroK" />
  	</appSettings>
  </configuration>
  ```
 
  **Content type:** If you don't choose a value from the drop-down list, JSON will be the default value.
 
- **Objects example:** For the Objects example, fill in the **Person.Name**, **Person.Age**, **Person.Address.Street**, and **Person.Address.ZIPCode** text boxes with the corresponding name, age, street, and zip code values.
+ **Objects example:** For the Objects example, fill in the `Person.Name`, `Person.Age`, `Person.Address.Street`, and `Person.Address.ZIPCode` text boxes with the corresponding name, age, street, and zip code values.
 
- **DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for **Number**, datetime for **Date**, and text for **Name**).
+ **DataType example:** For the DataType example, the fields should contain the correct data type format (numeric for `Number`, datetime for `Date`, and text for `Name`).
 
 4. Click the **Submit** button. You will get a results page like the following:
 
  ![Results page](assets/result_page.png)
 
- In the case of the Objects example, you can also receive a nested JSON containing object properties (e.g. Person.Name, Person.Address.City). The DataTypes example can receive OUT parameters from all supported data types (Text, Numeric, and DateTime).
+ In the case of the Objects example, you can also receive a nested JSON containing object properties (e.g. `Person.Name`, `Person.Address.City`). The DataTypes example can receive OUT parameters from all supported data types (Text, Numeric, and DateTime).
 
 <a name="troubleshooting"></a>
-###Troubleshooting
+### Troubleshooting
 
 If the test results page shows 401 as a Response status value, this means that the token provided is wrong, or you didn't provide a token value in the form. Check your token value (contained in the API web.config file) and enter it in the Token text box in the form.
 
 If the action is cancelled, verify that the URL value and the content type value correspond to the same content type, for example:
 
-- **JSON:** http<span></span>://localhost:65062/api/webhook/Post with JSON or an empty value in the content type drop-down list
+- **JSON:** `http://localhost:65062/api/webhook/Post` with JSON or an empty value in the content type drop-down list
 
-- **URLENCODED:** http:<span></span>//localhost:65062/api/webhook/PostWithPayload with URLENCODED as the value in the content type drop-down list 
+- **URLENCODED:** `http://localhost:65062/api/webhook/PostWithPayload` with URLENCODED as the value in the content type drop-down list 
 
 
 
