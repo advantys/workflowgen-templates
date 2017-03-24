@@ -1,6 +1,6 @@
-##SENDHTTPPOST Workflow Application
+## SENDHTTPPOST Workflow Application
 
-###Table of Contents
+### Table of Contents
 
 - [Introduction](#introduction)
 - [Requirements](#requirements)
@@ -10,7 +10,7 @@
 - [Troubleshooting](#troubleshooting)
 
 <a id="introduction"></a>
-###Introduction
+### Introduction
 
 The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow application lets users send outgoing webhooks (HTTP post requests) to external systems. These examples will show you how the application performs when sending all supported data types, as well as how to use nested-level parameters to send and receive information from external sources.
 
@@ -21,12 +21,12 @@ The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow applicatio
 For more information on SENDHTTPPOST, see the [SENDHTTPPOST workflow application](http://bit.ly/2jrl6bX) section in the **WorkflowGen Administration Module Reference Guide**.
 
 <a id="requirements"></a>
-###Requirements
+### Requirements
 
 These examples require that you have the SENDHTTPPOST application installed in your WorkflowGen environment (available as of version 6.6.0), and Visual Studio to open and run the solutions.
 
 <a id="installation"></a>
-###Installation
+### Installation
 
 1. Download [Webhook_Integration_Objects_Example.zip](samples/Webhook_Integration_Objects_Example.zip) or [Webhook_Integration_Example_DataTypes.zip](samples/Webhook_Integration_DataTypes_Example.zip) and unzip it. Alternately, you can clone the **workflowgen-templates** repository and navigate to the **Webhook_Integration_Objects_Example** or the **Webhook_Integration_DataTypes_Example** folder, where the *.sln file is located.
 
@@ -40,12 +40,12 @@ These examples require that you have the SENDHTTPPOST application installed in y
  Be sure to take note of the hostname and the port number for the example because they will be used in the next steps.
 
 <a id="configuration">
-###Configuration
+### Configuration
 
 In the WorkflowGen Administration Module home page, click the **New process** button and import the *.xml file that corresponds to the test project (contained in the [LOCAL PATH]\Webhook_Integration_[SELECTED EXAMPLE] folder).
 
 <a id="test-execution"></a>
-###Test execution
+### Test execution
 
 1. Click the process's link on the home page.
 
