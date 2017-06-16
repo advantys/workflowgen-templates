@@ -18,7 +18,7 @@ The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow applicatio
 
 [Webhook_Integration_Example_DataTypes.zip](samples/Webhook_Integration_DataTypes_Example.zip) contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON. There is no limit to the number of levels in the nested JSON.
 
-For more information on SENDHTTPPOST, see the [SENDHTTPPOST workflow application](http://bit.ly/2jrl6bX) section in the **WorkflowGen Administration Module Reference Guide**.
+For more information on SENDHTTPPOST, see the [SENDHTTPPOST workflow application](https://advantys.gitbooks.io/workflowgen-administration-module-reference-guide/content/sendhttppost-workflow-application.html) section in the **WorkflowGen Administration Module Reference Guide**.
 
 <a id="requirements"></a>
 ### Requirements
