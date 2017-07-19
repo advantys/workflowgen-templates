@@ -14,9 +14,9 @@
 
 The [WorkflowGen](https://www.workflowgen.com/) SENDHTTPPOST workflow application lets users send outgoing webhooks (HTTP post requests) to external systems. These examples will show you how the application performs when sending all supported data types, as well as how to use nested-level parameters to send and receive information from external sources.
 
-[Webhook_Integration_Objects_Example.zip](samples/Webhook_Integration_Objects_Example.zip) contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON. There is no limit to the number of levels in the nested JSON.
+[Webhook_Integration_Objects_Example.zip](samples/Objects.zip) contains an example of an API that receives nested JSON (using either the application/json or application/x-www-form-urlencoded content type), converts them into objects to process them, and sends back a payload containing another nested JSON. There is no limit to the number of levels in the nested JSON.
 
-[Webhook_Integration_Example_DataTypes.zip](samples/Webhook_Integration_DataTypes_Example.zip) contains an example of an API that sends and receives JSON or URLENCODED payloads containing text, numeric, and datetime type data, processes them, and sends back a payload containing the three data types.
+[Webhook_Integration_Example_DataTypes.zip](samples/DataTypes.zip) contains an example of an API that sends and receives JSON or URLENCODED payloads containing text, numeric, and datetime type data, processes them, and sends back a payload containing the three data types.
 
 
 
@@ -30,7 +30,7 @@ These examples require that you have the SENDHTTPPOST application installed in y
 <a id="installation"></a>
 ### Installation
 
-1. Download [Webhook_Integration_Objects_Example.zip](samples/Webhook_Integration_Objects_Example.zip) or [Webhook_Integration_Example_DataTypes.zip](samples/Webhook_Integration_DataTypes_Example.zip) and unzip it. Alternately, you can clone the **workflowgen-templates** repository and navigate to the **Webhook_Integration_Objects_Example** or the **Webhook_Integration_DataTypes_Example** folder, where the *.sln file is located.
+1. Download [Webhook_Integration_Objects_Example.zip](samples/Objects.zip) or [Webhook_Integration_Example_DataTypes.zip](samples/DataTypes.zip) and unzip it. Alternately, you can clone the **workflowgen-templates** repository and navigate to the **Objects** or the **DataTypes** folder, where the *.sln file is located.
 
 
 2. Open the *.sln file in Visual Studio.
