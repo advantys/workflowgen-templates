@@ -44,5 +44,5 @@ Le superviseur de l’employé pour lequel la demande est soumise sélectionne l
 
 ### Télécharger
 
-[Téléchargez ce processus](dist/habilitation-informatiquev1.xml.zip) et importez-le dans votre environnement WorkflowGen existant, ou [téléchargez la version gratuite de WorkflowGen](https://www.workflowgen.com/fr/telecharger-logiciel-workflow-gratuit/) et déployez le processus pour un nombre illimité d’utilisateurs. Exécutez le processus tel quel ou personnalisez le formulaire ainsi que la définition du workflow selon vos besoins spécifiques.
+[Téléchargez ce processus](dist/habilitation-informatiquev1.xml.zip) et importez-le dans votre environnement WorkflowGen existant. Exécutez le processus tel quel ou personnalisez le formulaire ainsi que la définition du workflow selon vos besoins spécifiques.
 
