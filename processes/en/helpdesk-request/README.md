@@ -40,4 +40,4 @@ The client launches a request \(called a support ticket\) in order to describe t
 
 ### Download
 
-[Download this process](dist/helpdesk-v1.xml.zip) and import it into your existing WorkflowGen environment.
+[Download this process](dist/helpdesk-v1.xml.zip) and import it into your existing WorkflowGen environment. You can run the process as-is or fully customize the form and the workflow definition to meet your specific needs. 
