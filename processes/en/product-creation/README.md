@@ -46,5 +46,5 @@ The Operations Department finalizes the request by confirming the anticipated la
 
 ### Download
 
-[Download this process](dist/new-product-creation-v1.xml.zip) and import it into your existing WorkflowGen environment. 
+[Download this process](dist/new-product-creation-v1.xml.zip) and import it into your existing WorkflowGen environment. You can run the process as-is or fully customize the form and the workflow definition to meet your specific needs. 
 
