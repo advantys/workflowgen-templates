@@ -45,5 +45,5 @@ The supervisor of the employee for whom the request is being made selects the ap
 
 ### Download
 
-[Download this process](dist/it-clearance-v1.xml.zip) and import it into your existing WorkflowGen environment, or [download the Free version of WorkflowGen](https://www.workflowgen.com/download-free-workflow-software/) and deploy this process to unlimited users. You can run the process as-is or fully customize the form and the workflow definition to meet your specific needs. 
+[Download this process](dist/it-clearance-v1.xml.zip) and import it into your existing WorkflowGen environment. You can run the process as-is or fully customize the form and the workflow definition to meet your specific needs. 
 
