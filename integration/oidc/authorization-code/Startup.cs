@@ -105,7 +105,10 @@ namespace oidc
                             path: request.Path
                         );
                         var credential = new ClientCredential(options.ClientId, options.ClientSecret);
-                        var authContext = new AuthenticationContext(options.Authority, validateAuthority: true);
+                        var authContext = new AuthenticationContext(
+                            options.Authority,
+                            tokenCache: AuthPropertiesTokenCache.ForCodeRedemption(context.Properties)
+                        );
                         var result = await authContext.AcquireTokenByAuthorizationCodeAsync(
                             authorizationCode: context.ProtocolMessage.Code,
                             redirectUri: new Uri(currentUri),
