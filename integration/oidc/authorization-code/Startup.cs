@@ -18,6 +18,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using GraphQL.Client;
+using GraphQL.Client.Http;
 
 namespace oidc
 {
@@ -119,6 +121,22 @@ namespace oidc
                         context.HandleCodeRedemption(result.AccessToken, result.IdToken);
                     }
                 };
+            });
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IGraphQLClient, GraphQLHttpClient>(provider =>
+            {
+                var httpContextAccessor = provider.GetService<IHttpContextAccessor>();
+                var client = new GraphQLHttpClient(Configuration["OpenId:Resource"]);
+                (var _, var accessToken) = Utilities.GetTokensFromContext(
+                    context: httpContextAccessor.HttpContext,
+                    authority: Configuration["OpenId:Authority"],
+                    clientId: Configuration["OpenId:ClientId"],
+                    clientSecret: Configuration["OpenId:ClientSecret"],
+                    resource: Configuration["OpenId:Resource"]
+                ).Result;
+
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
+                return client;
             });
             services.AddMvc(options =>
             {
