@@ -13,14 +13,14 @@ namespace oidc.Pages
 {
     public class WorkflowGenProfileModel : PageModel
     {
-        private readonly IConfiguration _config;
-        private readonly IGraphQLClient _graphqlClient;
+        private readonly IConfiguration config;
+        private readonly IGraphQLClient graphqlClient;
 
         public WorkflowGenProfileModel(IConfiguration config, IGraphQLClient client)
             : base()
         {
-            _config = config;
-            _graphqlClient = client;
+            this.config = config;
+            this.graphqlClient = client;
         }
 
         public async Task OnGetAsync()
@@ -31,9 +31,6 @@ namespace oidc.Pages
                 query {
                     viewer {
                         defaultLanguage,
-                        directory {
-                            name
-                        }
                         id
                         firstName
                         lastName
@@ -41,23 +38,17 @@ namespace oidc.Pages
                 }
                 "
             };
-            var response = await _graphqlClient.SendQueryAsync(request);
+            var response = await graphqlClient.SendQueryAsync(request);
 
-            ViewData["WFGUser"] = response.GetDataFieldAs<WFGUser>("viewer");
+            ViewData["WFGUser"] = response.GetDataFieldAs<WorkflowGenUser>("viewer");
         }
 
-        public struct WFGUser
+        public struct WorkflowGenUser
         {
             public string defaultLanguage { get; set; }
-            public WFGDirectory directory { get; set; }
             public string id { get; set; }
             public string firstName { get; set; }
             public string lastName { get; set; }
-        }
-
-        public struct WFGDirectory
-        {
-            public string name { get; set; }
         }
     }
 }

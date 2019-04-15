@@ -51,33 +51,24 @@ namespace oidc
             {
                 Configuration.Bind("OpenId", options);
 
+                // We need the authorization code to get both id and access tokens
                 options.ResponseType = "code id_token";
+
+                // Saves the access token in the cookies
                 options.SaveTokens = true;
+
+                // Session lifetime will match the tokens'
                 options.UseTokenLifetime = true;
+
+                // WorkflowGen's GraphQL API doesn't have a /userinfo endpoint
+                // like described in the OpenID Connect protocol. This prevents
+                // the middleware from requesting from this endpoint.
                 options.GetClaimsFromUserInfoEndpoint = false;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     NameClaimType = "name",
                     RoleClaimType = "role"
                 };
-
-                // Prevents the handler from removing those claims from the id token.
-                // Concretely, those lines removes the Action pending for this claim.
-                options.ClaimActions.Remove("nonce");
-                options.ClaimActions.Remove("aud");
-                options.ClaimActions.Remove("azp");
-                options.ClaimActions.Remove("acr");
-                options.ClaimActions.Remove("amr");
-                options.ClaimActions.Remove("iss");
-                options.ClaimActions.Remove("iat");
-                options.ClaimActions.Remove("nbf");
-                options.ClaimActions.Remove("exp");
-                options.ClaimActions.Remove("at_hash");
-                options.ClaimActions.Remove("c_hash");
-                options.ClaimActions.Remove("auth_time");
-                options.ClaimActions.Remove("ipaddr");
-                options.ClaimActions.Remove("platf");
-                options.ClaimActions.Remove("ver");
 
                 // Adds an action to map custom claims from additional scopes.
                 options.ClaimActions.MapUniqueJsonKey("sub", "sub");
@@ -88,6 +79,7 @@ namespace oidc
                 options.ClaimActions.MapUniqueJsonKey("email", "email");
 
                 // Ensures that only the following scopes are requested.
+                // If you need more, add them here.
                 options.Scope.Clear();
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
@@ -125,6 +117,7 @@ namespace oidc
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IGraphQLClient, GraphQLHttpClient>(provider =>
             {
+                // Retrieve the access token from the TokenCache.
                 var httpContextAccessor = provider.GetService<IHttpContextAccessor>();
                 var client = new GraphQLHttpClient(Configuration["OpenId:Resource"]);
                 (var _, var accessToken) = Utilities.GetTokensFromContext(

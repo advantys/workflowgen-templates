@@ -9,7 +9,7 @@ namespace oidc
 {
     public partial class Utilities
     {
-        private const string OBJECT_IDENTIFIER_CLAIM_URI = "http://schemas.microsoft.com/identity/claims/objectidentifier";
+        private const string ObjectIdentifierClaimUri = "http://schemas.microsoft.com/identity/claims/objectidentifier";
 
         /// <summary>
         /// Get the stored tokens associated with the http context.
@@ -30,7 +30,7 @@ namespace oidc
         {
             var authContext = new AuthenticationContext(authority, AuthPropertiesTokenCache.ForApiCalls(context));
             var credential = new ClientCredential(clientId, clientSecret);
-            var userObjectId = context.User.FindFirst(OBJECT_IDENTIFIER_CLAIM_URI).Value;
+            var userObjectId = context.User.FindFirst(ObjectIdentifierClaimUri).Value;
             var result = await authContext.AcquireTokenSilentAsync(
                 resource: resource,
                 clientCredential: credential,

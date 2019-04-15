@@ -2,12 +2,8 @@
 @model WorkflowGenProfileModel
 @{
     ViewData["Title"] = "WorkflowGen's Profile";
-    var wfgUser = (WorkflowGenProfileModel.WFGUser)ViewData["WFGUser"];
+    var wfgUser = (WorkflowGenProfileModel.WorkflowGenUser)ViewData["WFGUser"];
 }
-
-<p>
-    User is in directory named <b>@wfgUser.directory.name</b>.
-</p>
 
 <table class="table table-bordered">
     <tbody>

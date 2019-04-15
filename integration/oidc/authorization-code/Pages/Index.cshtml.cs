@@ -11,23 +11,20 @@ namespace oidc.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly IConfiguration _config;
+        private readonly IConfiguration config;
 
         public IndexModel(IConfiguration config)
             : base()
-            => _config = config;
+            => this.config = config;
 
         public async Task OnGetAsync()
         {
-            (
-                string idToken,
-                string accessToken
-            ) = await Utilities.GetTokensFromContext(
+            (var idToken, var accessToken) = await Utilities.GetTokensFromContext(
                 context: HttpContext,
-                authority: _config["OpenId:Authority"],
-                clientId: _config["OpenId:ClientId"],
-                clientSecret: _config["OpenId:ClientSecret"],
-                resource: _config["OpenId:Resource"]
+                authority: config["OpenId:Authority"],
+                clientId: config["OpenId:ClientId"],
+                clientSecret: config["OpenId:ClientSecret"],
+                resource: config["OpenId:Resource"]
             );
 
             ViewData["idToken"] = idToken;
