@@ -21,7 +21,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using GraphQL.Client;
 using GraphQL.Client.Http;
 
-namespace oidc
+namespace WorkflowGenClientExample
 {
     public class Startup
     {

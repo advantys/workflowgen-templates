@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using GraphQL.Client;
 using GraphQL.Common.Request;
 
-namespace oidc.Pages
+namespace WorkflowGenClientExample.Pages
 {
     public class WorkflowGenProfileModel : PageModel
     {

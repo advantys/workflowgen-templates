@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace oidc
+namespace WorkflowGenClientExample
 {
     /// <summary>
     /// <see>https://github.com/aspnet/AspNetCore/blob/v2.2.3/src/Security/Authentication/OpenIdConnect/samples/OpenIdConnect.AzureAdSample/AuthPropertiesTokenCache.cs</see>

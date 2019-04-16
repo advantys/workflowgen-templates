@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 
-namespace oidc.Pages
+namespace WorkflowGenClientExample.Pages
 {
     public class IndexModel : PageModel
     {

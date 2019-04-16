@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace oidc
+namespace WorkflowGenClientExample
 {
     public partial class Utilities
     {
