@@ -1,0 +1,64 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@section Styles
+{
+    <style>
+        .page-td {
+            max-width: 200px;
+            word-wrap: break-word;
+            text-align: left;
+        }
+    </style>
+}
+
+<div class="text-center">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1 class="display-4">Hello @User.Identity.Name!</h1>
+    }
+    else
+    {
+        <h1 class="display-4">Hello!</h1>
+    }
+
+    <h2 class="display-6 mt-4">Your User Principal Claims</h2>
+    <table class="table table-striped table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in User.Claims)
+            {
+                <tr>
+                    <td>@claim.Type</td>
+                    <td style="text-align: left;">@claim.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2 class="display-6 mt-4">Tokens</h2>
+    <table class="table table-sm">
+        <tbody>
+            <tr>
+                <th scope="row">Id Token</th>
+                <td class="page-td">
+                    @ViewData["idToken"]
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Access Token</th>
+                <td class="page-td">
+                    @ViewData["accessToken"]
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
