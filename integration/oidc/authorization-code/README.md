@@ -1,36 +1,36 @@
-# OpenID Connect Example with Server Side Web App
+# OpenID Connect Example with Server-Side Web App
 ## Overview
-This example application uses the OpenID Connect (OIDC) protocol to authenticate
+This sample application uses the OpenID Connect (OIDC) protocol to authenticate
 with Azure Active Directory and get an access token to request WorkflowGen's
 GraphQL API.
 
 ## Prerequisites
-1. dotnet core sdk 2.2
+1. .NET core SDK 2.2
 1. Make sure to have a valid WorkflowGen licence and serial number.
 1. Make sure to have access to an Azure subscription.
-1. Make sure to have a WorkflowGen server setup with OIDC authentication with
+1. Make sure to have a WorkflowGen server set up with OIDC authentication with
 Azure AD.
 
-    Read the [WorkflowGen for Azure](https://docs.advantys.com/workflowgen-for-azure/) guide to know how!
+    See the [WorkflowGen for Azure](https://docs.advantys.com/workflowgen-for-azure/)
+    guide for information and instructions.
 
 ## Technologies
-
-This example uses aspnet core 2.2 with the OpenIDConnect authentication
+This example uses ASP.NET Core 2.2 with the OpenIDConnect authentication
 middleware. For GraphQL requests, it uses the GraphQL.Client library. Pages are
 generated using the Razor engine. Bootstrap and jQuery are available client-side.
-It is based on the dotnet core template named `webapp`.
+It is based on the .NET Core `webapp` template.
 
 # Setup
-Before beginning the setup of this example, you should now already have two (2)
-app registrations in your Azure AD that represents WorkflowGen's portal and
-WorkflowGen's GraphQL API. If you don't, you must finish the authentication
+Before beginning the setup of this example, you should now already have two
+app registrations in your Azure AD that represent the WorkflowGen portal and
+GraphQL API. If you don't, follow the instructions in the authentication
 section of the WorkflowGen for Azure guide.
 
-## Create a New App Registration in Azure AD (Azure cli)
-The following commands create the necessary application registration in
-Azure AD using the Azure cli commandline tools.
+## Create a new app registration in Azure AD (Azure cli)
+The following commands create the required application registration in
+Azure AD using the Azure CLI command line tools.
 
-**Note**: You need to be logged in the Azure cli. To do this, run `az login`.
+**Note**: You need to be logged into the Azure cli. To do this, run `az login`.
 
 ### Create the application registration
 ```powershell
@@ -68,55 +68,54 @@ $webAppClient = & az ad app create `
     --id $webAppClient.appId
 ```
 
-You will need the following information for the example configuration:
+You'll need the following information to configure the example:
 
-* The client id. This is the value of `$webAppclient.appId`.
+* The client ID. This is the value of `$webAppclient.appId`.
 * The client secret. This is the value of `$password`.
-* The GraphQL API App Id URI. This is the value of `$webApiApp.identifierUris[0]`.
-* The Azure AD Directory ID. Run the following command to get it:
+* The GraphQL API App ID URI. This is the value of `$webApiApp.identifierUris[0]`.
+* The Azure AD Directory ID. To get it, run the following command:
 
     ```powershell
     az account show | ConvertFrom-Json | ForEach-Object tenantId
     ```
 
-## Create a New App Registration in Azure AD (Azure Web Portal)
-To represent this example application that wants to access WorkflowGen's
-GraphQL API, we need to register it to Azure AD and give it access to the API.
+## Create a new app registration in Azure AD (Azure Web Portal)
+To represent this example application that wants to access WorkflowGen
+GraphQL API, you need to register it in Azure AD and give it access to the API.
 This way, when requesting the GraphQL API resource in the OIDC protocol, you
 will get an access token that is a valid JWT and that can be transmitted to
 the API for authorization.
 
 Keep in mind that the user that will authenticate with this application must
-exists in WorkflowGen.
+exist in WorkflowGen.
 
-1. In Azure AD, go to the `App Registrations` section.
-1. Click on the `New application registration` button.
+1. In Azure AD, go to the **App Registrations** section and click the
+**New application registration** button.
 1. Enter the following information:
 
     Name: `My aspnet core Web App`
     Application Type: `Web app / API`
     Sign-on URL: `http://localhost:8080`
 
-1. When you are ready, click on the `Create` button.
+1. When you're done, click on the **Create** button.
 
 You now have registered this example application. You now need to finish
 configuring it in order to get the auhtentication working properly.
 
-1. Go to the `My aspnet core Web App` application registration page in Azure AD.
-1. Copy the Application ID and save it for later use. This is the `Client Id`
-of the application.
-1. Click on the `Settings` button.
-1. Go to the `Reply URLs` section.
-1. Add `http://localhost:8080/signin` to the list and click on the `Save`
-button.
-1. Return to the sections list and go to the `Keys` section.
+1. Go to the **My aspnet core Web App** registered application page in Azure AD.
+1. Copy the Application ID, which you'll need later. This is the application's
+Client ID.
+1. Click on the **Settings** button.
+1. In the **Reply URLs** section, add `http://localhost:8080/signin` to the
+list, then click **Save**.
+1. Return to the sections list and go to the **Keys** section.
 1. In the `Passwords` sub-section, add a line with the following information:
 
     Description: `secret`
     Expires: `Never expires`
-    Value: A random Guid (see the following note)
+    Value: A random GUID (see the following note)
 
-    **About Generating a Guid**
+    **How to generate a GUID**
 
     Open a PowerShell terminal and enter the following command:
     ```powershell
@@ -124,47 +123,45 @@ button.
     ```
     Copy the result and enter in the value section of the form.
 
-1. Click on the `Save` button.
-1. Copy the value that has been generated after the save. It is the `Client Secret`
-of this application.
-1. Return to the sections list and go to the `Required permissions` section.
-1. Click on the `Add` button.
-1. Click on the `Select an API` button.
-1. Search for the WorkflowGen's GraphQL API application that you've configured
-prior to this guide, click on it and click on the `Select` button.
-1. In the `Select permissions` section, check all checkboxes and click on the
-`Select` button.
-1. Click on the `Done` button.
+1. Click **Save**.
+1. Copy the value that's generated after the save. It is the the application's
+Client Secret.
+1. Return to the sections list and go to the **Required permissions** section.
+1. Click **Add** then **Select an API**.
+1. Search for the WorkflowGen GraphQL API application that you configured,
+select it, and click the **Select** button.
+1. In the **Select permissions** section, check all checkboxes, then click the
+**Select** button.
+1. Click the **Done** button.
 
-You should now see WorkflowGen's GraphQL API in the list of required permissions
-for this example application.
+You should now see the WorkflowGen GraphQL API in the list of required
+permissions for this example application.
 
-You should now have four (4) pieces of information in your possession at this
-point:
+You should now have four pieces of information:
 
-1. This application registration's Application ID or `Client Id`
-1. This application registration's Password Key or `Client Secret`
-1. The App ID URI of WorkflowGen's GraphQL API. It should look like this:
+1. This application registration's Application ID or Client ID
+1. This application registration's Password Key or Client Secret
+1. The WorkflowGen GraphQL API's App ID URI, which should look like this:
 
     `http://localhost:8888/wfgen/graphql`
 
-1. Your Azure AD Directory ID which can be found in the properties section of your
-Azure AD page.
+1. Your Azure AD Directory ID, which can be found in the **Properties** section
+of your Azure AD page.
 
-## Configure the Example Application
+## Configure the example application
 The configuration of the example is straightforward and takes a lot less steps
 than configuring it in Azure AD.
 
 ### Prerequisites
-1. Make sure to have installed the dotnet core sdk version 2.2. The `dotnet`
-commandline tool should be available in a terminal.
+1. Make sure to have installed the .NET core SDK version 2.2. The `dotnet`
+command line tool should be available in a terminal.
 1. Make sure that the user that you're using is a valid WorkflowGen user.
 
 Optionally, you can install Visual Studio Code to run and debug this example.
-There is existing vscode settings in the repository to make it easier to get
+There are existing VSCode settings in the repository to make it easier to get
 started.
 
-### Get Started
+### Configuration steps
 1. Clone this application somewhere on your computer.
 
     ```powershell
@@ -172,22 +169,22 @@ started.
     Set-Location .\workflowgen-templates\integration\oidc\authorization-code
     ```
 
-1. Open the project folder with vscode.
-1. Duplicate the file `appsettings.Development.template.json` and rename it to
+1. Open the project folder with VSCode.
+1. Duplicate the `appsettings.Development.template.json` file and rename as
 `appsettings.Development.json`.
-1. Duplicate the file `appsettings.template.json` and rename it to
+1. Duplicate the `appsettings.template.json` file and rename as
 `appsettings.json`.
-1. In the `appsettings.json` file, replace the placeholders surrounded by `[]`
-inclusively with the values that you have gattered in the last section.
+1. In the `appsettings.json` file, replace the placeholders inside the brackets
+(`[]`) with the values that you got in the previous section:
 
     * `[your azure ad tenant id]`: Your Azure AD Directory ID
-    * `[your application's client id (Application Id)]`: The Client Id
+    * `[your application's client id (Application Id)]`: The Client ID
     * `[your application's client secret added to your azure ad app]`: The Client Secret
-    * `[workflowgen's url]`: The part of the App ID URI which represents WorkflowGen's
-    domain and base path e.g. `localhost:8888/wfgen` in the example App ID URI
+    * `[workflowgen url]`: The part of the App ID URI which represents WorkflowGen's
+    domain and base path (e.g. `localhost:8888/wfgen`) in the example App ID URI
     above.
 
-1. Start debugging in vscode or run:
+1. Start debugging in VSCode, or run the following command:
 
     1. `dotnet restore`
     1. `dotnet run`
