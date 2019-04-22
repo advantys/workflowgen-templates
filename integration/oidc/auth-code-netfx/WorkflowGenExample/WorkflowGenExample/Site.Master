@@ -47,9 +47,22 @@
             <div class="navbar navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a runat="server" class="nav-link" href="~/">Home</a></li>
-                    <li class="nav-item"><a runat="server" class="nav-link" href="~/About">About</a></li>
-                    <li class="nav-item"><a runat="server" class="nav-link" href="~/Contact">Contact</a></li>
                 </ul>
+                <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <AnonymousTemplate>
+                        <% if (this.ShowLoginButtonInNav) %>
+                        <% { %>
+                                <div class="form-inline navbar-right">
+                                    <button runat="server" class="btn btn-outline-success" type="button" onserverclick="btnLogin_Click">Login</button>
+                                </div>
+                        <% } %>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <div class="form-inline navbar-right">
+                            <button runat="server" class="btn btn-outline-secondary" type="button" onserverclick="btnLogout_Click">Logout</button>
+                        </div>
+                    </LoggedInTemplate>
+                </asp:LoginView>
             </div>
         </nav>
 
@@ -60,7 +73,7 @@
             <hr />
 
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - WorkflowGen Example </p>
+                <p>&copy; <%: DateTime.Now.Year %> - Advantys Solutions ltd. </p>
             </footer>
         </div>
     </form>

@@ -11,7 +11,7 @@ namespace WorkflowGenExample
 {
 
 
-    public partial class Contact
+    public partial class _404
     {
     }
 }
