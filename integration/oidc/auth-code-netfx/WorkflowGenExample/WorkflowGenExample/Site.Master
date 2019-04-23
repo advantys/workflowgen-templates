@@ -15,6 +15,7 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <asp:ContentPlaceHolder ID="Styles" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
@@ -47,6 +48,13 @@
             <div class="navbar navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a runat="server" class="nav-link" href="~/">Home</a></li>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <LoggedInTemplate>
+                            <li class="nav-item">
+                                <a runat="server" class="nav-link" href="~/WorkflowGenProfile.aspx">WorkflowGen Profile</a>
+                            </li>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
                 </ul>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
