@@ -62,22 +62,24 @@ namespace WorkflowGenExample
 
                     var response = await client.SendQueryAsync(GQLFactory.GetViewerActions(pageNumber: currentPage, pageSize: 10));
 
-                    if ((bool)response.Data.viewer.actions.hasNextPage)
+                    if ((bool)response.Data.viewer.actions.hasNextPage.Value)
                         currentPage++;
 
                     if (response.Errors?.Count() > 0)
                         throw new Exception(response.Errors[0].Message);
 
-                    var actionItems = (from item in response.Data.viewer.actions.items as IEnumerable<dynamic>
+                    var actionItems = (
+                        from item in response.Data.viewer.actions.items as IEnumerable<dynamic>
                         where !ids.Contains(item.id.Value as string)
-                        select (item as JObject).ToObject<Action>()).ToList();
+                        select (item as JObject).ToObject<Action>()
+                    ).ToList();
 
                     if (actionItems.Count <= 0)
                         Console.WriteLine("No new actions.");
                     else
                         actionItems.ForEach(WriteNewAction);
 
-                    ids.AddRange(actionItems.Select(item => item.id));
+                    ids.AddRange(from item in actionItems select item.id);
                 }
 
                 Task.Delay(TimeSpan.FromMinutes(1)).Wait();
