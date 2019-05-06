@@ -55,7 +55,8 @@ namespace WorkflowGenExample
 
             var lastCheckedDate = new DateTime(1970, 1, 1, 0, 0, 0, kind: DateTimeKind.Local); // EPOCH
 
-            while (true) {
+            while (true)
+            {
                 using (var client = new GraphQLHttpClient(config.Resource))
                 {
                     GraphQLResponse response;
@@ -63,7 +64,8 @@ namespace WorkflowGenExample
 
                     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {clientCreds.access_token}");
 
-                    do {
+                    do
+                    {
                         response = await client.SendQueryAsync(GQLFactory.GetViewerActions(
                             pageNumber: currentPage,
                             pageSize: 10,

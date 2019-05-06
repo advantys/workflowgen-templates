@@ -52,7 +52,8 @@ fragment userFragment on User {
     lastName
 }
                 ",
-                Variables = new {
+                Variables = new
+                {
                     pageNumber = pageNumber,
                     pageSize = pageSize,
                     // From the docs:
