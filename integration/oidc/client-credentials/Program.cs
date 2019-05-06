@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using GraphQL.Client.Http;
+using GraphQL.Common.Response;
 
 namespace WorkflowGenExample
 {
@@ -52,34 +53,40 @@ namespace WorkflowGenExample
                 clientCreds = JsonConvert.DeserializeObject<ClientCredentialsResponse>(await response.Content.ReadAsStringAsync());
             }
 
-            var ids = new List<string>();
-            var currentPage = 1; // GraphQL lists are 1-based
+            var lastCheckedDate = new DateTime(1970, 1, 1); // EPOCH
 
             while (true) {
                 using (var client = new GraphQLHttpClient(config.Resource))
                 {
+                    GraphQLResponse response;
+                    var currentPage = 1;
+
                     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {clientCreds.access_token}");
 
-                    var response = await client.SendQueryAsync(GQLFactory.GetViewerActions(pageNumber: currentPage, pageSize: 10));
+                    do {
+                        response = await client.SendQueryAsync(GQLFactory.GetViewerActions(
+                            pageNumber: currentPage,
+                            pageSize: 10,
+                            actionsCreatedSince: lastCheckedDate
+                        ));
 
-                    if ((bool)response.Data.viewer.actions.hasNextPage.Value)
+                        if (response.Errors?.Count() > 0)
+                            throw new Exception(response.Errors[0].Message);
+
+                        var actionItems = (
+                            from item in response.Data.viewer.actions.items as IEnumerable<dynamic>
+                            select (item as JObject).ToObject<Action>()
+                        ).ToList();
+
+                        if (actionItems.Count() <= 0)
+                            Console.WriteLine("No new actions.");
+                        else
+                            actionItems.ForEach(WriteNewAction);
+
                         currentPage++;
+                    } while ((bool)response.Data.viewer.actions.hasNextPage.Value);
 
-                    if (response.Errors?.Count() > 0)
-                        throw new Exception(response.Errors[0].Message);
-
-                    var actionItems = (
-                        from item in response.Data.viewer.actions.items as IEnumerable<dynamic>
-                        where !ids.Contains(item.id.Value as string)
-                        select (item as JObject).ToObject<Action>()
-                    ).ToList();
-
-                    if (actionItems.Count <= 0)
-                        Console.WriteLine("No new actions.");
-                    else
-                        actionItems.ForEach(WriteNewAction);
-
-                    ids.AddRange(from item in actionItems select item.id);
+                    lastCheckedDate = DateTime.UtcNow;
                 }
 
                 Task.Delay(TimeSpan.FromMinutes(1)).Wait();
