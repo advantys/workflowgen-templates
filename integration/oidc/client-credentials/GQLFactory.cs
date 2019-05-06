@@ -5,8 +5,6 @@ namespace WorkflowGenExample
 {
     public static class GQLFactory
     {
-        private const string ISO8601DateTimeFormat = "yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz";
-
         public static GraphQLRequest GetViewerActions(int pageNumber, int pageSize, DateTime actionsCreatedSince)
             => new GraphQLRequest
             {
@@ -57,7 +55,12 @@ fragment userFragment on User {
                 Variables = new {
                     pageNumber = pageNumber,
                     pageSize = pageSize,
-                    actionsCreatedSince = actionsCreatedSince.ToString(format: ISO8601DateTimeFormat)
+                    // From the docs:
+                    //      The "O" or "o" standard format specifier represents a
+                    //      custom date and time format string using a pattern that
+                    //      preserves time zone information and emits a result string
+                    //      that complies with ISO 8601.
+                    actionsCreatedSince = actionsCreatedSince.ToString(format: "o")
                 }
             };
     }

@@ -53,7 +53,7 @@ namespace WorkflowGenExample
                 clientCreds = JsonConvert.DeserializeObject<ClientCredentialsResponse>(await response.Content.ReadAsStringAsync());
             }
 
-            var lastCheckedDate = new DateTime(1970, 1, 1); // EPOCH
+            var lastCheckedDate = new DateTime(1970, 1, 1, 0, 0, 0, kind: DateTimeKind.Local); // EPOCH
 
             while (true) {
                 using (var client = new GraphQLHttpClient(config.Resource))
@@ -86,7 +86,7 @@ namespace WorkflowGenExample
                         currentPage++;
                     } while ((bool)response.Data.viewer.actions.hasNextPage.Value);
 
-                    lastCheckedDate = DateTime.UtcNow;
+                    lastCheckedDate = DateTime.Now;
                 }
 
                 Task.Delay(TimeSpan.FromMinutes(1)).Wait();
