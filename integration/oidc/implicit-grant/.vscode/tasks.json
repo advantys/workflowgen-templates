@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/implicit-grant.csproj"
+                "${workspaceFolder}/workflowgenexample.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/implicit-grant.csproj"
+                "${workspaceFolder}/workflowgenexample.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/implicit-grant.csproj"
+                "${workspaceFolder}/workflowgenexample.csproj"
             ],
             "problemMatcher": "$tsc"
         }

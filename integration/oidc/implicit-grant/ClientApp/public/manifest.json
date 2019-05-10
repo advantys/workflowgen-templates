@@ -1,6 +1,6 @@
 {
-  "short_name": "implicit_grant",
-  "name": "implicit_grant",
+  "short_name": "Example",
+  "name": "WorkflowGenExample",
   "icons": [
     {
       "src": "favicon.ico",

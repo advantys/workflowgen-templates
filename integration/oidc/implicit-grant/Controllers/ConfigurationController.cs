@@ -2,7 +2,7 @@ using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 
-namespace implicit_grant.Controllers
+namespace WorkflowGenExample.Controllers
 {
     [Route("api/[controller]")]
     public class ConfigurationController : Controller
