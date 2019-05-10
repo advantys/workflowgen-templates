@@ -2,8 +2,16 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 
+import { Reducers as CommonReducers } from './Common';
+import { Reducers as ConfigurationReducers } from './Configuration';
+import { Reducers as AuthenticationReducers } from './Authentication';
+
 export default function configureStore (history, initialState) {
   const reducers = {
+    isFetching: CommonReducers.isFetching,
+    config: ConfigurationReducers.config,
+    user: AuthenticationReducers.user,
+    token: AuthenticationReducers.token
   };
 
   const middleware = [
