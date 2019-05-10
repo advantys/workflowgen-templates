@@ -5,31 +5,30 @@ export const ActionTypes = {
 
 export const ActionCreators = {
   fetchUser: () => (dispatch, getState) => {
-    const { config: { authenticationContext = { getCachedUser: () => ({ isLoggedIn: false }) } } } = getState();
+    const { config: { authenticationContext } } = getState();
 
-    dispatch({ type: ActionTypes.RECEIVE_USER_TYPE, user: authenticationContext.getCachedUser() });
+    if (authenticationContext) {
+      dispatch({ type: ActionTypes.RECEIVE_USER_TYPE, user: authenticationContext.getCachedUser() });
+    }
   },
   fetchToken: () => (dispatch, getState) => {
     const { config: {
-      authenticationContext = { getCachedToken: () => null },
-      clientId
+      authenticationContext, clientId
     } } = getState();
 
-    dispatch({
-      type: ActionTypes.RECEIVE_TOKEN_TYPE,
-      token: authenticationContext.getCachedToken(clientId)
-    });
+    if (authenticationContext) {
+      dispatch({
+        type: ActionTypes.RECEIVE_TOKEN_TYPE,
+        token: authenticationContext.getCachedToken(clientId)
+      });
+    }
   }
 };
 
-function userReducer (state = { isLoggedIn: false }, action) {
+function userReducer (state = null, action) {
   switch (action.type) {
     case ActionTypes.RECEIVE_USER_TYPE:
-      if (!action.user) {
-        return { isLoggedIn: false };
-      }
-
-      return { ...action.user, isLoggedIn: true };
+      return action.user;
 
     default:
       return state;

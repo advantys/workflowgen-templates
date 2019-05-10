@@ -22,20 +22,20 @@ class Home extends Component {
         return acc;
       }, false);
 
-    return nextProps.user.isLoggedIn !== this.props.user.isLoggedIn ||
+    return nextProps.user !== this.props.user ||
       configHasChanged ||
       this.props.token !== nextProps.token;
   }
 
   render () {
     let userClaims = (
-      <div>
+      <div className='text-center'>
         <p>You don't seem to be logged in.</p>
         <Button color='primary' onClick={this.props.onLoginClick}>Log in</Button>
       </div>
     );
 
-    if (this.props.user.isLoggedIn) {
+    if (this.props.user) {
       const body = Object.entries(this.props.user).map(([key, value]) => {
         switch (typeof value) {
           case 'object':
@@ -88,14 +88,14 @@ class Home extends Component {
 
     return (
       <Container>
-        {!this.props.user.isLoggedIn &&
+        {!this.props.user &&
           <Row>
             <Col>
               <h1 className='display-3'>Single Page Application Example</h1>
             </Col>
           </Row>
         }
-        {this.props.user.isLoggedIn &&
+        {this.props.user &&
           <Row>
             <Col className='text-center'>
               <h2 className='display-4'>
@@ -113,10 +113,12 @@ class Home extends Component {
           <Row>
             <Col>
               <Table borderless>
-                <tr>
-                  <td>Token</td>
-                  <td style={{ maxWidth: '500px' }} className='text-break word-break'>{this.props.token}</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>Token</td>
+                    <td style={{ maxWidth: '500px' }} className='text-break word-break'>{this.props.token}</td>
+                  </tr>
+                </tbody>
               </Table>
             </Col>
           </Row>
@@ -155,7 +157,6 @@ Home.propTypes = {
 };
 
 Home.defaultTypes = {
-  user: { isLoggedIn: false },
   clientConfiguration: {},
   onLoginClick: () => {}
 };

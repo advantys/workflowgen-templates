@@ -7,7 +7,7 @@ export default class Configuration {
       redirectUri: this.redirectUri,
       tenant: this.tenant,
       endpoints: {
-        workflowgenGraphQLApi: this.resource
+        [this.resource]: this.resource
       }
     });
   }
