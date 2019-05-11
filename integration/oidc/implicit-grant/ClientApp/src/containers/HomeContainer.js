@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { ActionCreators as ConfigurationActionCreators } from '../store/Configuration';
-import { ActionCreators as AuthenticationActionCreators } from '../store/Authentication';
 import Home from '../components/Home';
 
 class HomeContainer extends Component {
@@ -11,12 +8,6 @@ class HomeContainer extends Component {
     super(props);
 
     this.handleLoginClick = this.handleLoginClick.bind(this);
-  }
-
-  async componentDidMount () {
-    await this.props.fetchClientConfiguration();
-    this.props.fetchUser();
-    this.props.fetchToken();
   }
 
   handleLoginClick () {
@@ -39,9 +30,5 @@ export default connect(
     config: store.config,
     user: store.user,
     token: store.token
-  }),
-  dispatch => bindActionCreators({
-    ...ConfigurationActionCreators,
-    ...AuthenticationActionCreators
-  }, dispatch)
+  })
 )(HomeContainer);

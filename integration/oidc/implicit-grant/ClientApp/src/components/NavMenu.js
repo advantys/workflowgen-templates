@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import {
   Collapse,
   Container,
@@ -13,8 +12,6 @@ import {
 } from 'reactstrap';
 
 import './NavMenu.css';
-import { ActionCreators as AuthenticationActionCreators } from '../store/Authentication';
-import { ActionCreators as ConfigurationActionCreators } from '../store/Configuration';
 
 class NavMenu extends React.Component {
   constructor (props) {
@@ -25,12 +22,6 @@ class NavMenu extends React.Component {
     this.state = {
       isOpen: false
     };
-  }
-
-  async componentDidMount () {
-    await this.props.fetchClientConfiguration();
-    this.props.fetchUser();
-    this.props.fetchToken();
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -81,9 +72,5 @@ export default connect(
   store => ({
     userIsLoggedIn: !!store.user,
     config: store.config
-  }),
-  dispatch => bindActionCreators({
-    ...AuthenticationActionCreators,
-    ...ConfigurationActionCreators
-  }, dispatch)
+  })
 )(NavMenu);

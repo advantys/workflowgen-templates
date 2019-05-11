@@ -4,10 +4,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
+import { ApolloProvider } from 'react-apollo';
 
 import configureStore from './store/configureStore';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import Configuration from './models/Configuration';
+import { buildApolloClient } from './models/Apollo';
 
 // Create browser history to use in the Redux store
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
@@ -20,13 +23,19 @@ const store = configureStore(history, {
 
 const rootElement = document.getElementById('root');
 
-ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
-  </Provider>,
-  rootElement
-);
+Configuration.load().then(config => {
+  const apolloClient = buildApolloClient(config.resource, config.authenticationContext.getCachedToken());
 
-registerServiceWorker();
+  ReactDOM.render(
+    <Provider store={store}>
+      <ApolloProvider client={apolloClient}>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+      </ApolloProvider>
+    </Provider>,
+    rootElement
+  );
+
+  registerServiceWorker();
+});
