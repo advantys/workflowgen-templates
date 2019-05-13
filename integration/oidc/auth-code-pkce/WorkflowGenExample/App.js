@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
 
+import { configureStore } from './redux/store';
+
+const store = configureStore(/* initialState: */ {});
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -8,14 +12,20 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
+const Root = () => (
+  <View style={styles.container}>
+    <Text style={styles.welcome}>Welcome to React Native!</Text>
+    <Text style={styles.instructions}>To get started, edit App.js</Text>
+    <Text style={styles.instructions}>{instructions}</Text>
+  </View>
+);
+
 export default class App extends Component {
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Provider store={store}>
+        <Root />
+      </Provider>
     );
   }
 }
