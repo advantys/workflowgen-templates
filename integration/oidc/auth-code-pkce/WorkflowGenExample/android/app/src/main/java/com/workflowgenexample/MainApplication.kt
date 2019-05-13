@@ -12,27 +12,19 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerPackage
 import java.util.Arrays
 
 class MainApplication : Application(), ReactApplication {
-
     private val mReactNativeHost = object : ReactNativeHost(this) {
-        override fun getUseDeveloperSupport(): Boolean {
-            return BuildConfig.DEBUG
-        }
+        override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
 
-        override fun getPackages(): List<ReactPackage> {
-            return Arrays.asList<ReactPackage>(
+        override fun getPackages(): List<ReactPackage> =
+            Arrays.asList<ReactPackage>(
                     MainReactPackage(),
                     RNGestureHandlerPackage()
             )
-        }
 
-        override fun getJSMainModuleName(): String {
-            return "index"
-        }
+        override fun getJSMainModuleName(): String = "index"
     }
 
-    override fun getReactNativeHost(): ReactNativeHost {
-        return mReactNativeHost
-    }
+    override fun getReactNativeHost(): ReactNativeHost = mReactNativeHost
 
     override fun onCreate() {
         super.onCreate()
