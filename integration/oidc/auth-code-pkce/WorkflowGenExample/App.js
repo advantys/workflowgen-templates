@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { configureStore } from './redux/store';
 
@@ -12,7 +13,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 
-const Root = () => (
+const RootScreen = () => (
   <View style={styles.container}>
     <Text style={styles.welcome}>Welcome to React Native!</Text>
     <Text style={styles.instructions}>To get started, edit App.js</Text>
@@ -20,11 +21,18 @@ const Root = () => (
   </View>
 );
 
+const StackNavigator = createStackNavigator({
+  Home: {
+    screen: RootScreen
+  }
+});
+const AppContainer = createAppContainer(StackNavigator);
+
 export default class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <Root />
+        <AppContainer />
       </Provider>
     );
   }
