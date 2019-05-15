@@ -8,23 +8,26 @@ import com.facebook.react.ReactPackage
 import com.facebook.react.shell.MainReactPackage
 import com.facebook.soloader.SoLoader
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage
 
 import java.util.Arrays
 
 class MainApplication : Application(), ReactApplication {
     private val mReactNativeHost = object : ReactNativeHost(this) {
-        override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
+        override fun getUseDeveloperSupport() = BuildConfig.DEBUG
 
-        override fun getPackages(): List<ReactPackage> =
+        override fun getPackages() =
             Arrays.asList<ReactPackage>(
                     MainReactPackage(),
-                    RNGestureHandlerPackage()
+                    RNGestureHandlerPackage(),
+                    AsyncStoragePackage(),
+                    WorkflowGenExamplePackage()
             )
 
-        override fun getJSMainModuleName(): String = "index"
+        override fun getJSMainModuleName() = "index"
     }
 
-    override fun getReactNativeHost(): ReactNativeHost = mReactNativeHost
+    override fun getReactNativeHost() = mReactNativeHost
 
     override fun onCreate() {
         super.onCreate()
