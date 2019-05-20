@@ -1,58 +1,45 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { StatusBar, Linking } from 'react-native';
+import { NavigationActions } from 'react-navigation';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { configureStore } from './redux/store';
+import { createNavigation } from './navigation';
 
 const store = configureStore(/* initialState: */ {});
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu'
-});
+const Navigation = createNavigation();
 
-const RootScreen = () => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>Welcome to React Native!</Text>
-    <Text style={styles.instructions}>To get started, edit App.js</Text>
-    <Text style={styles.instructions}>{instructions}</Text>
-  </View>
-);
+export default class extends Component {
+  constructor (props) {
+    super(props);
 
-const StackNavigator = createStackNavigator({
-  Home: {
-    screen: RootScreen
+    this.handleOpenURL = this.handleOpenURL.bind(this);
   }
-});
-const AppContainer = createAppContainer(StackNavigator);
 
-export default class App extends Component {
+  async handleOpenURL (event) {
+    const [base] = event.url.split('?');
+
+    if (base.endsWith('callback') || base.endsWith('callback/')) {
+      await AsyncStorage.setItem('url', event.url);
+      this.navigator.dispatch(NavigationActions.navigate({ routeName: 'AuthCallback' }));
+    }
+  }
+
+  componentDidMount () {
+    Linking.addEventListener('url', this.handleOpenURL);
+  }
+
+  componentWillUnmount () {
+    Linking.removeEventListener('url', this.handleOpenURL);
+  }
+
   render () {
     return (
       <Provider store={store}>
-        <AppContainer />
+        <StatusBar backgroundColor='#153C92' barStyle='light-content' />
+        <Navigation ref={nav => { this.navigator = nav; }} />
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
-  }
-});

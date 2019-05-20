@@ -12,6 +12,7 @@ import com.reactnativecommunity.asyncstorage.AsyncStoragePackage
 
 import java.util.Arrays
 
+@Suppress("UNUSED")
 class MainApplication : Application(), ReactApplication {
     private val mReactNativeHost = object : ReactNativeHost(this) {
         override fun getUseDeveloperSupport() = BuildConfig.DEBUG

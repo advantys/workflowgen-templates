@@ -69,11 +69,7 @@ class WebBrowser constructor(
 
     @ReactMethod
     @Suppress("UNUSED")
-    fun dismiss(
-            @Suppress("UNUSED_PARAMETER")
-            options: ReadableMap,
-            promise: Promise
-    ) = promise.resolve(true)
+    fun dismiss() {}
 
     private fun sendEvent(reactContext: ReactContext, eventName: String, params: WritableMap? = null)
     = reactContext

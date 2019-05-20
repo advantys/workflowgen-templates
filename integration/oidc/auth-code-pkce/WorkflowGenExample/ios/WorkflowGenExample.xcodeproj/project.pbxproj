@@ -39,6 +39,11 @@
 		405F9EE122F74DC987E4521C /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B675E46CF404A15814C41C6 /* libRNCAsyncStorage.a */; };
 		81F9F051228B4669006CF5E0 /* WebBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9F050228B4669006CF5E0 /* WebBrowser.swift */; };
 		81F9F07B228B481F006CF5E0 /* WebBrowserBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F9F07A228B481F006CF5E0 /* WebBrowserBridge.m */; };
+		81F9F088228CFC23006CF5E0 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9F087228CFC23006CF5E0 /* JWT.swift */; };
+		81F9F08A228CFC4A006CF5E0 /* JWTBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F9F089228CFC4A006CF5E0 /* JWTBridge.m */; };
+		81F9F099228DF00D006CF5E0 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F9F098228DF00D006CF5E0 /* MF_Base64Additions.m */; };
+		81F9F09B228E0150006CF5E0 /* CodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9F09A228E0150006CF5E0 /* CodeGenerator.swift */; };
+		81F9F09D228E0218006CF5E0 /* CodeGeneratorBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F9F09C228E0218006CF5E0 /* CodeGeneratorBridge.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		CE91EF674FB64ECA8117B7F4 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C04F840CF54AE78A0F52F2 /* libRNGestureHandler.a */; };
@@ -374,6 +379,17 @@
 		81F9F04F228B4669006CF5E0 /* WorkflowGenExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WorkflowGenExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		81F9F050228B4669006CF5E0 /* WebBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowser.swift; sourceTree = "<group>"; };
 		81F9F07A228B481F006CF5E0 /* WebBrowserBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebBrowserBridge.m; sourceTree = "<group>"; };
+		81F9F082228CFA74006CF5E0 /* Base64.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base64.framework; path = Carthage/Build/iOS/Base64.framework; sourceTree = "<group>"; };
+		81F9F084228CFA7A006CF5E0 /* JWT_iOS_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT_iOS_Swift.framework; path = Carthage/Build/iOS/JWT_iOS_Swift.framework; sourceTree = "<group>"; };
+		81F9F087228CFC23006CF5E0 /* JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
+		81F9F089228CFC4A006CF5E0 /* JWTBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWTBridge.m; sourceTree = "<group>"; };
+		81F9F08B228D0C16006CF5E0 /* JWT_iOS_Framework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT_iOS_Framework.framework; path = Carthage/Build/iOS/JWT_iOS_Framework.framework; sourceTree = "<group>"; };
+		81F9F08D228D0C1B006CF5E0 /* JWT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWT.framework; path = Carthage/Build/iOS/JWT.framework; sourceTree = "<group>"; };
+		81F9F090228D1819006CF5E0 /* JWTSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTSwift.framework; path = Carthage/Build/iOS/JWTSwift.framework; sourceTree = "<group>"; };
+		81F9F097228DF00D006CF5E0 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
+		81F9F098228DF00D006CF5E0 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
+		81F9F09A228E0150006CF5E0 /* CodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGenerator.swift; sourceTree = "<group>"; };
+		81F9F09C228E0218006CF5E0 /* CodeGeneratorBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeGeneratorBridge.m; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9153F80496D247DCB777D12F /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		94C04F840CF54AE78A0F52F2 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
@@ -524,6 +540,8 @@
 		13B07FAE1A68108700A75B9A /* WorkflowGenExample */ = {
 			isa = PBXGroup;
 			children = (
+				81F9F097228DF00D006CF5E0 /* MF_Base64Additions.h */,
+				81F9F098228DF00D006CF5E0 /* MF_Base64Additions.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -534,6 +552,10 @@
 				81F9F050228B4669006CF5E0 /* WebBrowser.swift */,
 				81F9F07A228B481F006CF5E0 /* WebBrowserBridge.m */,
 				81F9F04F228B4669006CF5E0 /* WorkflowGenExample-Bridging-Header.h */,
+				81F9F087228CFC23006CF5E0 /* JWT.swift */,
+				81F9F089228CFC4A006CF5E0 /* JWTBridge.m */,
+				81F9F09A228E0150006CF5E0 /* CodeGenerator.swift */,
+				81F9F09C228E0218006CF5E0 /* CodeGeneratorBridge.m */,
 			);
 			name = WorkflowGenExample;
 			sourceTree = "<group>";
@@ -564,6 +586,11 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81F9F090228D1819006CF5E0 /* JWTSwift.framework */,
+				81F9F08D228D0C1B006CF5E0 /* JWT.framework */,
+				81F9F08B228D0C16006CF5E0 /* JWT_iOS_Framework.framework */,
+				81F9F084228CFA7A006CF5E0 /* JWT_iOS_Swift.framework */,
+				81F9F082228CFA74006CF5E0 /* Base64.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
@@ -1224,6 +1251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F9F09B228E0150006CF5E0 /* CodeGenerator.swift in Sources */,
+				81F9F099228DF00D006CF5E0 /* MF_Base64Additions.m in Sources */,
+				81F9F08A228CFC4A006CF5E0 /* JWTBridge.m in Sources */,
+				81F9F088228CFC23006CF5E0 /* JWT.swift in Sources */,
+				81F9F09D228E0218006CF5E0 /* CodeGeneratorBridge.m in Sources */,
 				81F9F07B228B481F006CF5E0 /* WebBrowserBridge.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
@@ -1336,6 +1368,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",
@@ -1363,6 +1399,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-gesture-handler/ios/**",

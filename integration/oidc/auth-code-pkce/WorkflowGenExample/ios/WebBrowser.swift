@@ -17,15 +17,9 @@ class WebBrowser : RCTEventEmitter, SFSafariViewControllerDelegate {
     self.hasListeners = false
   }
 
-  override var methodQueue: DispatchQueue! {
-    get {
-      return DispatchQueue.main
-    }
-  }
+  override var methodQueue: DispatchQueue! { return DispatchQueue.main }
 
-  override static func requiresMainQueueSetup() -> Bool {
-    return true
-  }
+  override static func requiresMainQueueSetup() -> Bool { return true }
 
   override func constantsToExport() -> [AnyHashable : Any]! {
     return [
