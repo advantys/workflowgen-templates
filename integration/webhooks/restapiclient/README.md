@@ -20,7 +20,7 @@ For more information on RestApiClient, see the [RESTAPICLIENT workflow applicati
 <a id="requirements"></a>
 ### Requirements
 
-These examples require that you have the RESTAPICLIENT application installed in your WorkflowGen environment (available as of version 7.15.0).
+Those examples require that you have the RESTAPICLIENT application installed in your WorkflowGen environment (available as of version 7.15.0).
 
 <a id="installation"></a>
 ### Installation
@@ -35,9 +35,13 @@ These examples require that you have the RESTAPICLIENT application installed in 
 2. Add the following parameters to `<appSettings>` in your `\wfgen\web.config` if they are not already there:
 
     `<add key="MyAzureAppClientId" value="<azure_client_id>" />`
+
     `<add key="MyAzureAppClientSecret" value="<azure_client_secret>" />`
+
     `<add key="MyAzureTenantId" value="<azure_tenant_id>" />`
+
     `<add key="MyAzureSubscriptionId" value="<azure_subscription_id>" />`
+
     `<add key="EngineMacroAppSettings" value="MyAzureApp*, MyAzureTenantId, MyAzureSubscriptionId" />`
 
 These configurations will generate the macros `<WF_APP_SETTING_MyAzureAppClientId>`, `<WF_APP_SETTING_MyAzureAppClientSecret>`, `<WF_APP_SETTING_MyAzureTenantId>` and `<WF_APP_SETTING_MyAzureSubscriptionId>`.
