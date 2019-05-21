@@ -139,7 +139,9 @@ export const ActionCreators = {
     }
 
     if (claims.at_hash) {
-      // TODO: validate at_hash value against access token
+      if (!await JWT.verifyAtHash(claims.at_hash, json.access_token.split('.'))) {
+        throw new Error('Access token has been proven invalid by the at_hash validation.');
+      }
     }
 
     Keychain.setGenericPassword('refreshToken', json.refresh_token);

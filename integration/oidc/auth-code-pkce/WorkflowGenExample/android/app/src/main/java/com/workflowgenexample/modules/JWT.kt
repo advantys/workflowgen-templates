@@ -5,6 +5,7 @@ import com.facebook.react.bridge.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.Exception
+import java.security.MessageDigest
 import java.security.Signature
 import javax.security.cert.X509Certificate
 
@@ -63,6 +64,27 @@ class JWT constructor(
         signature.initVerify(cert.publicKey)
         signature.update(signingInput)
         promise.resolve(signature.verify(signatureData))
+    }
+
+    @ReactMethod
+    @Suppress("UNUSED")
+    fun verifyAtHash(atHash: String, accessTokenComponents: ReadableArray, promise: Promise) {
+        val md = MessageDigest.getInstance("SHA-256")
+        val accessToken = accessTokenComponents.toArrayList().joinToString(".")
+        val accessTokenData = accessToken.toByteArray(charset = Charsets.US_ASCII)
+        val accessTokenSha256Data: ByteArray
+
+        try {
+            md.update(accessTokenData)
+            accessTokenSha256Data = md.digest()
+        } catch (exception: Exception) {
+            promise.reject(exception)
+            return
+        }
+
+        val halfAccessTokenSha256 = accessTokenSha256Data.sliceArray(0 until accessTokenSha256Data.size)
+        val verifier = Base64.encodeToString(halfAccessTokenSha256, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING)
+        promise.resolve(verifier == atHash)
     }
 
     companion object {

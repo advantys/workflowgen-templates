@@ -11,4 +11,9 @@ RCT_EXTERN_METHOD(verify:(NSDictionary* _Nonnull)args
                   resolve:(RCTPromiseResolveBlock*)resolve
                   reject:(RCTPromiseRejectBlock*)reject)
 
+RCT_EXTERN_METHOD(verifyAtHash:(NSString* _Nonnull)value
+                  accessToken:(NSArray* _Nonnull)components
+                  resolve:(RCTPromiseResolveBlock*)resolve
+                  reject:(RCTPromiseRejectBlock*)reject)
+
 @end

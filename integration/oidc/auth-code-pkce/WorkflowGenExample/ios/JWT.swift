@@ -1,4 +1,5 @@
 import Foundation
+import CommonCrypto
 
 @objc(JWT)
 class JWT : NSObject, RCTBridgeModule {
@@ -121,5 +122,25 @@ class JWT : NSObject, RCTBridgeModule {
         }
         
         resolve(result)
+    }
+    
+    @objc(verifyAtHash:accessToken:resolve:reject:)
+    func verifyAtHash(
+        value atHash: String,
+        accessToken components: NSArray!,
+        resolve: RCTPromiseResolveBlock,
+        reject: RCTPromiseRejectBlock
+    ) {
+        let accessToken = components.componentsJoined(by: ".")
+        let accessTokenData = accessToken.data(using: .ascii)!
+        var buffer = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        
+        accessTokenData.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
+            _ = CC_SHA256(bytes.baseAddress, CC_LONG(accessTokenData.count), &buffer)
+        }
+        buffer.removeLast(buffer.count / 2)
+        
+        let accessTokenFirstHalfBase64 = (Data(buffer) as NSData).base64UrlEncodedString()
+        resolve(accessTokenFirstHalfBase64 == atHash)
     }
 }
