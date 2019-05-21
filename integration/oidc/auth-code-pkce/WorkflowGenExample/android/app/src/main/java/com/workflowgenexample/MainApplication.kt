@@ -7,6 +7,7 @@ import com.facebook.react.ReactNativeHost
 import com.facebook.react.ReactPackage
 import com.facebook.react.shell.MainReactPackage
 import com.facebook.soloader.SoLoader
+import com.oblador.keychain.KeychainPackage
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage
 
@@ -22,6 +23,7 @@ class MainApplication : Application(), ReactApplication {
                     MainReactPackage(),
                     RNGestureHandlerPackage(),
                     AsyncStoragePackage(),
+                    KeychainPackage(),
                     WorkflowGenExamplePackage()
             )
 

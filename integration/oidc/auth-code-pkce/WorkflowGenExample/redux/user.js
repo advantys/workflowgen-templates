@@ -1,6 +1,7 @@
 /* global var fetch */ // eslint-disable-line
 import AsyncStorage from '@react-native-community/async-storage';
 import { NativeModules } from 'react-native';
+import * as Keychain from 'react-native-keychain';
 
 import { ActionTypes as FetchingActionTypes } from './fetching';
 import Configuration from '../models/Configuration';
@@ -141,11 +142,10 @@ export const ActionCreators = {
       // TODO: validate at_hash value against access token
     }
 
-    // TODO: store refresh token in Keychain iOS and SecureStore Android
+    Keychain.setGenericPassword('refreshToken', json.refresh_token);
     AsyncStorage.multiSet([
       ['idToken', json.id_token],
-      ['accessToken', json.access_token],
-      ['refreshToken', json.refresh_token]
+      ['accessToken', json.access_token]
     ]);
     AsyncStorage.multiRemove([ 'state', 'nonce', 'codeVerifier' ]);
     dispatch({ type: FetchingActionTypes.END_FETCH });
@@ -205,7 +205,7 @@ export const ActionCreators = {
     }
 
     if (json.refresh_token) {
-      storageItems.push([ 'refreshToken', json.refresh_token ]);
+      await Keychain.setGenericPassword('refreshToken', json.refresh_token);
     }
 
     await AsyncStorage.multiSet(storageItems);
@@ -218,9 +218,9 @@ export const ActionCreators = {
     /* eslint-disable no-unused-vars */
     const [
       [_, idToken],
-      [__, accessToken],
-      [___, refreshToken]
-    ] = await AsyncStorage.multiGet(/* keys */ ['idToken', 'accessToken', 'refreshToken']);
+      [__, accessToken]
+    ] = await AsyncStorage.multiGet(/* keys */ ['idToken', 'accessToken']);
+    const refreshTokenCreds = await Keychain.getGenericPassword('refreshToken');
     /* eslint-enable */
 
     if (!idToken || !accessToken) {
@@ -239,9 +239,9 @@ export const ActionCreators = {
     // Check the expiration of the token
     if (now > (claims.exp * 1000)) {
       try {
-        await ActionCreators.refreshTokens(refreshToken)(dispatch);
+        await ActionCreators.refreshTokens(refreshTokenCreds.password)(dispatch);
       } catch (err) {
-        await AsyncStorage.multiRemove([ 'idToken', 'accessToken', 'refreshToken' ]);
+        await AsyncStorage.multiRemove([ 'idToken', 'accessToken' ]);
         dispatch({
           type: ActionTypes.RECIEVE_USER,
           user: null
