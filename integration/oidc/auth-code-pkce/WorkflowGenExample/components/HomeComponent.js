@@ -6,15 +6,7 @@ import {
   SectionList
 } from 'react-native';
 
-import { Container } from '.';
-
-const Separator = props => (
-  <View
-    style={{
-      height: 1,
-      backgroundColor: props.backgroundColor || 'lightgray'
-    }} />
-);
+import { Container, Separator } from '.';
 
 class HomeComponent extends Component {
   constructor (props) {

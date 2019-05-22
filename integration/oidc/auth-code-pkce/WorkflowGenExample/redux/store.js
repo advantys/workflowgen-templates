@@ -7,7 +7,8 @@ import { Reducers as UserReducers } from './user';
 export function configureStore (initialState) {
   const reducers = {
     isFetching: FetchingReducers.isFetching,
-    user: UserReducers.user
+    user: UserReducers.user,
+    accessToken: UserReducers.accessToken
   };
   const middlewares = [
     thunkMiddleware

@@ -11,7 +11,8 @@ import Url from '../models/Url';
 const { JWT, CodeGenerator, WebBrowser } = NativeModules;
 
 export const ActionTypes = {
-  RECIEVE_USER: 'RECIEVE_USER'
+  RECIEVE_USER: 'RECIEVE_USER',
+  RECIEVE_ACCESS_TOKEN: 'RECIEVE_ACCESS_TOKEN'
 };
 
 const entriesToQueryString = (acc, [key, value]) => {
@@ -151,6 +152,7 @@ export const ActionCreators = {
     ]);
     AsyncStorage.multiRemove([ 'state', 'nonce', 'codeVerifier' ]);
     dispatch({ type: FetchingActionTypes.END_FETCH });
+    dispatch({ type: ActionTypes.RECIEVE_ACCESS_TOKEN, accessToken: json.access_token });
     dispatch({ type: ActionTypes.RECIEVE_USER, user: claims });
   },
   logout: () => async dispatch => {
@@ -212,6 +214,7 @@ export const ActionCreators = {
 
     await AsyncStorage.multiSet(storageItems);
     dispatch({ type: FetchingActionTypes.END_FETCH });
+    dispatch({ type: ActionTypes.RECIEVE_ACCESS_TOKEN, accessToken: json.access_token });
     dispatch({ type: ActionTypes.RECIEVE_USER, user: userClaims });
   },
   getUserFromStorage: () => async dispatch => {
@@ -245,6 +248,10 @@ export const ActionCreators = {
       } catch (err) {
         await AsyncStorage.multiRemove([ 'idToken', 'accessToken' ]);
         dispatch({
+          type: ActionTypes.RECIEVE_ACCESS_TOKEN,
+          accessToken: null
+        });
+        dispatch({
           type: ActionTypes.RECIEVE_USER,
           user: null
         });
@@ -252,6 +259,10 @@ export const ActionCreators = {
       return;
     }
 
+    dispatch({
+      type: ActionTypes.RECIEVE_ACCESS_TOKEN,
+      accessToken
+    });
     dispatch({
       type: ActionTypes.RECIEVE_USER,
       user: claims
@@ -269,6 +280,17 @@ function userReducer (state = null, action) {
   }
 }
 
+function accessTokenReducer (state = null, action) {
+  switch (action.type) {
+    case ActionTypes.RECIEVE_ACCESS_TOKEN:
+      return action.accessToken;
+
+    default:
+      return state;
+  }
+}
+
 export const Reducers = {
-  user: userReducer
+  user: userReducer,
+  accessToken: accessTokenReducer
 };

@@ -8,6 +8,7 @@ import com.facebook.react.ReactPackage
 import com.facebook.react.shell.MainReactPackage
 import com.facebook.soloader.SoLoader
 import com.oblador.keychain.KeychainPackage
+import com.oblador.vectoricons.VectorIconsPackage
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage
 
@@ -24,6 +25,7 @@ class MainApplication : Application(), ReactApplication {
                     RNGestureHandlerPackage(),
                     AsyncStoragePackage(),
                     KeychainPackage(),
+                    VectorIconsPackage(),
                     WorkflowGenExamplePackage()
             )
 

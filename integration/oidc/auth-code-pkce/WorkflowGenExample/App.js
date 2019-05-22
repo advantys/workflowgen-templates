@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { StatusBar, Linking } from 'react-native';
+import { StatusBar, Linking, Platform } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -37,7 +37,9 @@ export default class extends Component {
   render () {
     return (
       <Provider store={store}>
-        <StatusBar backgroundColor='#153C92' barStyle='light-content' />
+        <StatusBar
+          backgroundColor='#153C92'
+          barStyle='light-content' />
         <Navigation ref={nav => { this.navigator = nav; }} />
       </Provider>
     );

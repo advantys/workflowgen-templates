@@ -6,10 +6,10 @@ import {
 
 import {
   AuthContainer,
-  HomeContainer,
   AuthLoadingContainer,
   AuthCallbackContainer
-} from './containers';
+} from '../containers';
+import HomeNavigator from './homenavigation';
 
 export function createNavigation () {
   const defaultNavigationOptions = {
@@ -34,14 +34,6 @@ export function createNavigation () {
     initialRouteName: 'Home',
     defaultNavigationOptions
   });
-  const AppStackNavigator = createStackNavigator({
-    Home: {
-      screen: HomeContainer
-    }
-  }, {
-    initialRouteName: 'Home',
-    defaultNavigationOptions
-  });
   const CallbackStackNavigator = createStackNavigator({
     Home: {
       screen: AuthCallbackContainer
@@ -54,7 +46,7 @@ export function createNavigation () {
   return createAppContainer(createSwitchNavigator({
     Main: AuthLoadingStackNavigator,
     Auth: AuthStackNavigator,
-    App: AppStackNavigator,
+    App: HomeNavigator,
     AuthCallback: CallbackStackNavigator
   }, {
     initialRouteName: 'Main'
