@@ -63,6 +63,7 @@ $webAppClient = & az ad app create `
     --display-name "My React SPA" `
     --homepage $webAppUrl `
     --identifier-uris $webAppUrl `
+    --oauth2-allow-implicit-flow true `
     --reply-urls "$webAppUrl/callback" `
     | ConvertFrom-Json
 
