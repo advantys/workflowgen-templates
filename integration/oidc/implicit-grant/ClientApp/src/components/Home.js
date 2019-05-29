@@ -28,6 +28,7 @@ class Home extends Component {
   }
 
   render () {
+    const { user } = this.props;
     let userClaims = (
       <div className='text-center'>
         <p>You don't seem to be logged in.</p>
@@ -35,8 +36,8 @@ class Home extends Component {
       </div>
     );
 
-    if (this.props.user) {
-      const body = Object.entries(this.props.user).map(([key, value]) => {
+    if (user) {
+      const body = Object.entries(user).map(([key, value]) => {
         switch (typeof value) {
           case 'object':
             const stringified = JSON.stringify(value, null, 4)
@@ -88,18 +89,18 @@ class Home extends Component {
 
     return (
       <Container>
-        {!this.props.user &&
+        {!user &&
           <Row>
             <Col>
               <h1 className='display-3'>Single Page Application Example</h1>
             </Col>
           </Row>
         }
-        {this.props.user &&
+        {user &&
           <Row>
             <Col className='text-center'>
               <h2 className='display-4'>
-                Hello {this.props.user.profile.given_name} {this.props.user.profile.family_name}!
+                Hello {user.name}!
               </h2>
             </Col>
           </Row>

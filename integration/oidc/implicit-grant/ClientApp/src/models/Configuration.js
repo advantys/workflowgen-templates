@@ -1,15 +1,10 @@
-import { AuthenticationContext } from 'react-adal';
-
 export default class Configuration {
-  get authenticationContext () {
-    return new AuthenticationContext({
-      clientId: this.clientId,
-      redirectUri: this.redirectUri,
-      tenant: this.tenant,
-      endpoints: {
-        [this.resource]: this.resource
-      }
-    });
+  get authority () {
+    return `https://login.microsoftonline.com/${this.tenant}`;
+  }
+
+  get metadataUrl () {
+    return `${this.authority}/.well-known/openid-configuration`;
   }
 
   constructor (config) {
@@ -17,6 +12,19 @@ export default class Configuration {
     this.redirectUri = config.redirect_uri;
     this.tenant = config.tenant_id;
     this.resource = config.resource;
+  }
+
+  async getMetadata () {
+    let metadata = window.localStorage.getItem('metadata');
+
+    if (metadata) {
+      return JSON.parse(metadata);
+    }
+
+    metadata = await (await window.fetch(this.metadataUrl)).json();
+    window.localStorage.setItem('metadata', JSON.stringify(metadata));
+
+    return metadata;
   }
 
   static async load () {
