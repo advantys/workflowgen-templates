@@ -28,13 +28,7 @@ browser to get the application and for configuration management.
 | redux, react-redux | State management framework and its bindings for React |
 | react-router-dom | Client-side router for displaying different components based on its url location |
 | bootstrap, reactstrap | Bootstrap components for React |
-| react-adal | Community-made package that uses Microsoft's adal library for authentication with Azure. |
-
-**Note**: The `react-adal` package is used here istead of the Microsoft-made `adal-angular`
-because the latter doesn't fit in react because of its use of an iframe to
-automatically refresh a session. Concretely, during the refresh, there are 2
-instances of the application in memory. Also, the redirection doesn't work
-correctly and you end up with a blank page.
+| graphql-request | Small library for making GraphQL requests. It is passed as a React Context after authentication. |
 
 # Setup
 Before beginning the setup of this example, you should now already have two
