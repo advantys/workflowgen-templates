@@ -1,38 +1,52 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {
-  Container
-} from 'reactstrap';
-import { Query } from 'react-apollo';
 
-import { GQLFactory } from '../models/Apollo';
+import WorkflowGenProfileComponent from '../components/WorkflowGenProfileComponent';
+import { GraphQLContext, GQLFactory } from '../models/GraphQL';
 
 class WorkflowGenProfileContainer extends Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      error: null,
+      user: {
+        userName: null
+      }
+    };
+  }
+
+  async componentDidUpdate (prevProps, prevState) {
+    const {
+      state: {
+        user: { userName },
+        error
+      },
+      context: graphqlClient
+    } = this;
+
+    if (graphqlClient && !error && (!userName || userName !== prevState.user.userName)) {
+      try {
+        var data = await graphqlClient.request(GQLFactory.viewerProfile);
+      } catch (error) {
+        this.setState({ error });
+        return;
+      }
+
+      this.setState({
+        user: data.viewer
+      });
+    }
+  }
+
   render () {
-    return (
-      <Container>
-        <Query query={GQLFactory.query.getViewerProfile()}>
-          {({ loading, error, data }) => {
-            if (loading) {
-              return <p>Loading...</p>;
-            }
+    const { user, error } = this.state;
 
-            if (error) {
-              return <p>{error.message}</p>;
-            }
-
-            return (
-              <p>{data.viewer.firstName}</p>
-            );
-          }}
-        </Query>
-      </Container>
-    );
+    return <WorkflowGenProfileComponent
+      error={error}
+      user={user.userName ? user : undefined} />;
   }
 }
 
-export default connect(
-  store => ({
-    user: store.user
-  })
-)(WorkflowGenProfileContainer);
+WorkflowGenProfileContainer.contextType = GraphQLContext;
+
+export default WorkflowGenProfileContainer;

@@ -36,7 +36,7 @@ class NavMenu extends React.Component {
   }
 
   handleLogout () {
-    this.props.config.authenticationContext.logOut();
+    // TODO: handle logout
   }
 
   render () {
