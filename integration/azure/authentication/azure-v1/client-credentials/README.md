@@ -191,7 +191,7 @@ started.
 
     ```powershell
     git clone https://github.com/advantys/workflowgen-templates.git
-    Set-Location .\workflowgen-templates\integration\oidc\client-credentials
+    Set-Location .\workflowgen-templates\integration\azure\authentication\azure-v1\client-credentials
     ```
 
 1. Open the project folder with VSCode.

@@ -5,19 +5,8 @@ with Azure Active Directory (Azure V1) and get an access token to request the Wo
 GraphQL API.
 
 ## Prerequisites
+1. .NET core SDK 2.2
 1. NPM version 6.x or up.
-1. Yarn version 1.16+ or up.
-1. React-Native tools installed (`npm install --global react-native-cli`)
-1. Xcode 10.2 (for a Swift 5 compiler and the iOS 12 SDK)
-    1. Make sure to have installed the commandline tools (`xcode-select --install`).
-1. Android Studio 3.4
-    1. Android SDK Platform 28 (Android 9.0 Pie)
-    1. Android SDK Tools
-        1. Android Emulator 29.0.9
-        1. Android SDK Platform-Tools 28.0.3
-        1. Android SDK Tools 26.1.1
-1. The environment variable **ANDROID_HOME** must be set to the physical Android
-SDK location.
 1. Make sure to have a valid WorkflowGen licence and serial number.
 1. Make sure to have access to an Azure subscription.
 1. Make sure to have a WorkflowGen server set up with OIDC authentication with
@@ -26,17 +15,9 @@ Azure AD.
     See the [WorkflowGen for Azure](https://docs.advantys.com/workflowgen-for-azure/)
     guide for information and instructions.
 
-**Note**: Xcode is needed if you want to run the iOS version of the application.
-For this, you need to have a Mac. For the Android version, you need a platform
-supported by Android Studio (macOS, Windows or Linux).
-
-**Note**: The scripts below are in Powershell. To run them on non-Windows systems,
-you need to install Powershell Core.
-
 ## Technologies
-This example builds a mobile application for both the Android and iOS platforms
-using the react-native framework. No special libraries has been used for the
-authentication because none suitable is available at time of writing.
+This example uses ASP.NET Core 2.2 only to provide an entrypoint for the
+browser to get the application and for configuration management.
 
 ### Main dependencies
 
@@ -44,21 +25,16 @@ authentication because none suitable is available at time of writing.
 | --- | --- |
 | apollo-boost, apollo-link-context, react-apollo | Apollo suite of tools for client applications requesting a GraphQL API |
 | react | View engine designed by Facebook |
-| react-native | Framework for multi-platform mobile development designed by Facebook |
 | redux, react-redux | State management framework and its bindings for React |
-| react-navigation | JavaScript router for view management |
-| async-storage | On-device storage library for data persistence |
-| react-native-keychain | Library to store data securely such as the refresh token |
+| react-router-dom | Client-side router for displaying different components based on its url location |
+| bootstrap, reactstrap | Bootstrap components for React |
+| graphql-request | Small library for making GraphQL requests. It is passed as a React Context after authentication. |
 
 # Setup
 Before beginning the setup of this example, you should now already have two
 app registrations in your Azure AD that represent the WorkflowGen portal and
 GraphQL API. If you don't, follow the instructions in the authentication
 section of the WorkflowGen for Azure guide.
-
-**Note**: This WorkflowGen should be available over HTTPS using a valid
-certificate. iOS and Android will refuse any request to HTTP endpoint other
-than localhost.
 
 ## Create a new app registration in Azure AD (Azure cli)
 The following commands create the required application registration in
@@ -74,34 +50,40 @@ $webApiApp = & az ad app list `
     --query '[?displayName == `WorkflowGen GraphQL API`] | [0]' `
     | ConvertFrom-Json `
     | Select-Object -First 1
-$nativeAppUri = "workflowgenexample://"
+$webAppUrl = "http://localhost:5001"
 
 # Create the application registration.
-$nativeAppClient = & az ad app create `
-    --display-name "My React-Native SPA" `
-    --identifier-uris $nativeAppUri `
-    --reply-urls "$($nativeAppUri)callback" `
-    --native-app true `
+$webAppClient = & az ad app create `
+    --display-name "My React SPA" `
+    --homepage $webAppUrl `
+    --identifier-uris $webAppUrl `
+    --oauth2-allow-implicit-flow true `
+    --reply-urls "$webAppUrl/callback" `
     | ConvertFrom-Json
 
 # Create a service principal for the registration
-& az ad sp create --id $nativeAppClient.appId
+& az ad sp create --id $webAppClient.appId
 
 # Add required permissions for the GraphQL API access
 & az ad app permission add `
-    --id $nativeAppClient.appId `
+    --id $webAppClient.appId `
     --api $webApiApp.appId `
     --api-permissions "$($webApiApp.oauth2Permissions.id)=Scope"
 
 # Grant the required permissions for the GraphQL API Access
 & az ad app permission grant `
     --api $webApiApp.appId `
-    --id $nativeAppClient.appId
+    --id $webAppClient.appId
+
+# Give consent on behalf of organization. The consent form is not presented
+# for implicit grant flow.
+& az ad app permission admin-consent `
+    --id $webAppClient.appId
 ```
 
 You'll need the following information to configure the example:
 
-* The client ID. This is the value of `$nativeAppClient.appId`.
+* The client ID. This is the value of `$webAppclient.appId`.
 * The GraphQL API App ID URI. This is the value of `$webApiApp.identifierUris[0]`.
 * The Azure AD Directory ID. To get it, run the following command:
 
@@ -123,11 +105,11 @@ exist in WorkflowGen.
 **New application registration** button.
 1. Enter the following information:
 
-    * Name: `My React-Native App`
+    * Name: `My aspnet core Web App`
     * Application Type: `Accounts in this organizational directory only`
     * Redirect URI:
-        * Type: `Public client (mobile & desktop)`
-        * Value: `workflowgenexample://`
+        * Type: `Web`
+        * Value: `http://localhost:5001/callback`
 
 1. When you're done, click on the **Register** button.
 
@@ -137,12 +119,10 @@ configuring it in order to get the auhtentication working properly.
 1. Go to the **My React SPA** registered application page in Azure AD.
 1. Copy the Application ID in the **Overview** tab, which you'll need later.
 This is the application's Client ID.
+1. Click on the **Settings** button.
 1. Go to the **Authentication** tab.
-1. In the **Redirect URIs** section, add an entry to the list:
-
-    * Type: `Public client (mobile & desktop)`
-    * Redirect URI: `workflowgenexample://callback`
-
+1. Look for the **Implicit Grant** section and check the **Access tokens**
+and **Id tokens** options.
 1. Click **Save**.
 1. Go to the **API permissions** tab.
 1. Click the **Add a permission** button.
@@ -151,6 +131,12 @@ This is the application's Client ID.
 1. Click on the correct WorkflowGen GraphQL API application.
 1. Check the **user_impersonation** option.
 1. Click the **Add permissions** button.
+
+You also need to grant consent on behalf of the users of the organization
+bacause the consent screen will not be shown for the implicit grant flow:
+
+1. Go to the **API permissions** tab.
+1. Click on the **Grant admin consent for \<name of your orgainzation\>**
 
 You should now have four pieces of information:
 
@@ -167,19 +153,12 @@ The configuration of the example is straightforward and takes a lot less steps
 than configuring it in Azure AD.
 
 ### Prerequisites
-1. Make sure to have installed an iOS Simulatore and an Android Emulator.
-
-    You can download and run an Android emulator by opening the Android
-    Virtual Device (AVD) manager and add a new one using the on screen instructions.
-    is included in Android Studio.
-
-    For iOS, you need to open Xcode's settings and go to the **Components** tab.
-    Inside, you will find the installed and available simulator versions.
-
+1. Make sure to have installed the .NET core SDK version 2.2. The `dotnet`
+command line tool should be available in a terminal.
+1. Make sure to have installed at least Node v10.x and NPM v6.x or up.
 1. Make sure that the user that you're using is a valid WorkflowGen user.
 
-Optionally, you can install Visual Studio Code to run and debug JavaScript code
-using the React Native Tools extension.
+Optionally, you can install Visual Studio Code to run and debug this example.
 There are existing VSCode settings in the repository to make it easier to get
 started.
 
@@ -188,13 +167,13 @@ started.
 
     ```powershell
     git clone https://github.com/advantys/workflowgen-templates.git
-    Set-Location .\workflowgen-templates\integration\oidc\auth-code-pkce
+    Set-Location .\workflowgen-templates\integration\azure\authentication\azure-v1\implicit-grant
     ```
 
-1. Open the project folder `.\WorkflowGenExample` with VSCode.
-1. Duplicate the `config.template.js` file and rename as
-`.\WorkflowGenExample\config.js`.
-1. In the `config` file, replace the placeholders inside the brackets
+1. Open the project folder with VSCode.
+1. Duplicate the `appsettings.template.json` file and rename as
+`appsettings.json`.
+1. In the `appsettings.json` file, replace the placeholders inside the brackets
 (`[]`) with the values that you got in the previous section:
 
     * `[your azure ad tenant id]`: Your Azure AD Directory ID
@@ -202,37 +181,13 @@ started.
     * `[workflowgen url]`: The part of the App ID URI which represents WorkflowGen's
     domain and base path (e.g. `localhost:8888/wfgen`) in the example App ID URI
     above.
-1. In the `.\WorkflowGenExample` directory, install dependencies with the
-following command:
 
-    ```powershell
-    yarn install
-    ```
+1. Start debugging in VSCode, or run the following command:
 
-**Android**
+    1. `dotnet restore`
+    1. `dotnet build`
+    1. `dotnet run`
 
-1. Run the Android emulator or your choice.
-1. Using the commandline, execute `react-native run-android` from within the
-`.\WorkflowGenExample` folder.
-    1. Alternatively and for debugging, you can open the folder `.\WorkflowGenExample\android`
-    with Android Studio and click on the run or debug button.
-
-**iOS**
-
-1. Using a commandline, execute `react-native run-ios` from within the
-`.\WorkflowGenExample` folder.
-    1. The default simulator is **iPhone X**. If you want a different one, you
-    can pass the desired simulator name to the `--simulator` parameter like so:
-
-        ```powershell
-        react-native run-ios --simulator "iPhone XS Max"
-        ```
-
-    1. Alternatively and for debugging, you can open the `.\WorkflowGenExample\ios\WorkflowGenExample.xcodeproj`
-    folder (`open ./WorkflowGenExample/ios/WorkflowGenExample.xcodeproj` or
-    double click on it) with Xcode and click on the run button.
-
-**Note**: If the simulator is not running, it will be opened for you.
-
-**Note**: You don't need to be part of the Apple Developer Program to run this
-example in a simulator.
+That's it! If you go to the page `http://localhost:5001`, you will be prompted
+to authenticate in Azure AD. You can now explore the code on how this app is
+configured and how it requests WorkflowGen's GraphQL API.
