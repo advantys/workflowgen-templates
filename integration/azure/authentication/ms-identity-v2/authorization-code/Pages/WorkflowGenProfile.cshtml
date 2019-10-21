@@ -1,0 +1,27 @@
+@page
+@model WorkflowGenProfileModel
+@{
+    ViewData["Title"] = "WorkflowGen's Profile";
+    var wfgUser = (WorkflowGenProfileModel.WorkflowGenUser)ViewData["WFGUser"];
+}
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th class="text-right">First Name</th>
+            <td>@wfgUser.firstName</td>
+        </tr>
+        <tr>
+            <th class="text-right">Last Name</th>
+            <td>@wfgUser.lastName</td>
+        </tr>
+        <tr>
+            <th class="text-right">Identifier</th>
+            <td>@wfgUser.id</td>
+        </tr>
+        <tr>
+            <th class="text-right">Default Language</th>
+            <td>@wfgUser.defaultLanguage</td>
+        </tr>
+    </tbody>
+</table>
