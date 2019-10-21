@@ -7,10 +7,10 @@ import android.net.Uri
 import android.os.Binder
 import android.os.Bundle
 import android.os.Build
-import android.support.customtabs.CustomTabsClient
-import android.support.customtabs.CustomTabsServiceConnection
-import android.support.customtabs.CustomTabsSession
-import android.support.customtabs.CustomTabsService.ACTION_CUSTOM_TABS_CONNECTION
+import androidx.browser.customtabs.CustomTabsClient
+import androidx.browser.customtabs.CustomTabsServiceConnection
+import androidx.browser.customtabs.CustomTabsSession
+import androidx.browser.customtabs.CustomTabsService.ACTION_CUSTOM_TABS_CONNECTION
 import java.lang.ref.WeakReference
 
 class WebBrowserServiceConnection constructor(
