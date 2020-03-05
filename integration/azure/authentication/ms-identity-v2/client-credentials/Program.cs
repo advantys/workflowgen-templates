@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Threading;
-using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using GraphQL.Client.Http;
@@ -21,7 +17,6 @@ namespace WorkflowGenExample
         {
             // Configuration using json file
             var config = new OIDCConfiguration();
-            ClientCredentialsResponse clientCreds;
 
             new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
@@ -30,66 +25,61 @@ namespace WorkflowGenExample
                 .Bind(key: "Oidc", config);
 
             // Authentication using oAuth2 Client Credentials Grant flow
-            using (var client = new HttpClient())
+            using var tokenClient = new HttpClient();
+            tokenClient.DefaultRequestHeaders.Clear();
+
+            var content = new FormUrlEncodedContent(new[]
             {
-                client.DefaultRequestHeaders.Clear();
+                new KeyValuePair<string, string>("grant_type", "client_credentials"),
+                new KeyValuePair<string, string>("client_id", config.ClientId),
+                new KeyValuePair<string, string>("client_secret", config.ClientSecret),
+                new KeyValuePair<string, string>("resource", config.Resource)
+            });
 
-                var content = new FormUrlEncodedContent(new[]
-                {
-                    new KeyValuePair<string, string>("grant_type", "client_credentials"),
-                    new KeyValuePair<string, string>("client_id", config.ClientId),
-                    new KeyValuePair<string, string>("client_secret", config.ClientSecret),
-                    new KeyValuePair<string, string>("resource", config.Resource)
-                });
+            content.Headers.Clear();
+            content.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
 
-                content.Headers.Clear();
-                content.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+            var tokenResponse = await tokenClient.PostAsync(requestUri: config.TokenEndpoint, content);
 
-                var response = await client.PostAsync(requestUri: config.TokenEndpoint, content);
+            if (!tokenResponse.IsSuccessStatusCode)
+                throw new Exception(tokenResponse.ReasonPhrase);
 
-                if (!response.IsSuccessStatusCode)
-                    throw new Exception(response.ReasonPhrase);
-
-                clientCreds = JsonConvert.DeserializeObject<ClientCredentialsResponse>(await response.Content.ReadAsStringAsync());
-            }
-
+            var clientCreds = JsonConvert.DeserializeObject<ClientCredentialsResponse>(await tokenResponse.Content.ReadAsStringAsync());
             var lastCheckedDate = new DateTime(1970, 1, 1, 0, 0, 0, kind: DateTimeKind.Local); // EPOCH
 
             while (true)
             {
-                using (var client = new GraphQLHttpClient(config.Resource))
+                using var graphqlClient = new GraphQLHttpClient(config.Resource);
+                GraphQLResponse graphqlResponse;
+                var currentPage = 1;
+
+                graphqlClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {clientCreds.access_token}");
+
+                do
                 {
-                    GraphQLResponse response;
-                    var currentPage = 1;
+                    graphqlResponse = await graphqlClient.SendQueryAsync(GQLFactory.GetViewerActions(
+                        pageNumber: currentPage,
+                        pageSize: 10,
+                        actionsCreatedSince: lastCheckedDate
+                    ));
 
-                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {clientCreds.access_token}");
+                    if (graphqlResponse.Errors?.Count() > 0)
+                        throw new Exception(graphqlResponse.Errors[0].Message);
 
-                    do
-                    {
-                        response = await client.SendQueryAsync(GQLFactory.GetViewerActions(
-                            pageNumber: currentPage,
-                            pageSize: 10,
-                            actionsCreatedSince: lastCheckedDate
-                        ));
+                    var actionItems = (
+                        from item in graphqlResponse.Data.viewer.actions.items as IEnumerable<dynamic>
+                        select (item as JObject).ToObject<Action>()
+                    ).ToList();
 
-                        if (response.Errors?.Count() > 0)
-                            throw new Exception(response.Errors[0].Message);
+                    if (actionItems.Count() <= 0)
+                        Console.WriteLine("No new actions.");
+                    else
+                        actionItems.ForEach(WriteNewAction);
 
-                        var actionItems = (
-                            from item in response.Data.viewer.actions.items as IEnumerable<dynamic>
-                            select (item as JObject).ToObject<Action>()
-                        ).ToList();
+                    currentPage++;
+                } while ((bool)graphqlResponse.Data.viewer.actions.hasNextPage.Value);
 
-                        if (actionItems.Count() <= 0)
-                            Console.WriteLine("No new actions.");
-                        else
-                            actionItems.ForEach(WriteNewAction);
-
-                        currentPage++;
-                    } while ((bool)response.Data.viewer.actions.hasNextPage.Value);
-
-                    lastCheckedDate = DateTime.Now;
-                }
+                lastCheckedDate = DateTime.Now;
 
                 Task.Delay(TimeSpan.FromMinutes(1)).Wait();
             }
