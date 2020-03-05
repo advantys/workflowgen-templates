@@ -28,7 +28,7 @@ namespace WorkflowGenClientExample
             string resource
         )
         {
-            var authContext = new AuthenticationContext(authority, AuthPropertiesTokenCache.ForApiCalls(context));
+            var authContext = new AuthenticationContext(authority, AuthPropertiesTokenCache.ForApiCalls(context, CookieAuthenticationDefaults.AuthenticationScheme));
             var credential = new ClientCredential(clientId, clientSecret);
             var userObjectId = context.User.FindFirst(ObjectIdentifierClaimUri).Value;
             var result = await authContext.AcquireTokenSilentAsync(

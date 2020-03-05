@@ -15,6 +15,7 @@ namespace WorkflowGenClientExample
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args)
+                .UseUrls("http://localhost:5050/")
                 .Build()
                 .Run();
         }

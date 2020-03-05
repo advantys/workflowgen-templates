@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WorkflowGenClientExample.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly IConfiguration config;

@@ -8,9 +8,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using GraphQL.Client;
 using GraphQL.Common.Request;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WorkflowGenClientExample.Pages
 {
+    [Authorize]
     public class WorkflowGenProfileModel : PageModel
     {
         private readonly IConfiguration config;

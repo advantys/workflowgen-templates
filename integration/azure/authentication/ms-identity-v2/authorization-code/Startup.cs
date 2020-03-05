@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -52,7 +53,8 @@ namespace WorkflowGenClientExample
                 Configuration.Bind("OpenId", options);
 
                 // We need the authorization code to get both id and access tokens
-                options.ResponseType = "code id_token";
+                options.ResponseType = OpenIdConnectResponseType.Code;
+                options.UsePkce = false;
 
                 // Saves the access token in the cookies
                 options.SaveTokens = true;
@@ -77,6 +79,7 @@ namespace WorkflowGenClientExample
                 options.ClaimActions.MapUniqueJsonKey("family_name", "family_name");
                 options.ClaimActions.MapUniqueJsonKey("profile", "profile");
                 options.ClaimActions.MapUniqueJsonKey("email", "email");
+                options.ClaimActions.MapUniqueJsonKey("oid", "oid");
 
                 // Ensures that only the following scopes are requested.
                 // If you need more, add them here.
@@ -84,6 +87,7 @@ namespace WorkflowGenClientExample
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
+                options.Scope.Add($"{options.Resource}/default");
 
                 options.Events = new OpenIdConnectEvents
                 {
@@ -131,18 +135,15 @@ namespace WorkflowGenClientExample
                 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
                 return client;
             });
-            services.AddMvc(options =>
+            services.AddRazorPages();
+            services.AddAuthorization(options =>
             {
-                var policy = new AuthorizationPolicyBuilder()
-                    .RequireAuthenticatedUser()
-                    .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                options.AddPolicy("RequireAuthenticated", policy => policy.RequireAuthenticatedUser());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
@@ -156,8 +157,13 @@ namespace WorkflowGenClientExample
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseRouting();
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
         }
     }
 }

@@ -63,7 +63,7 @@ namespace WorkflowGenClientExample
         private void BeforeAccessNotificationWithProperties(TokenCacheNotificationArgs args)
         {
             if (_authProps.Items.TryGetValue(TOKEN_CACHE_KEY, out var cachedTokensText))
-                Deserialize(Convert.FromBase64String(cachedTokensText));
+                DeserializeAdalV3(Convert.FromBase64String(cachedTokensText));
         }
 
         private void BeforeAccessNotificationWithContext(TokenCacheNotificationArgs args)
@@ -78,7 +78,7 @@ namespace WorkflowGenClientExample
         private void AfterAccessNotificationWithProperties(TokenCacheNotificationArgs args)
         {
             if (HasStateChanged)
-                _authProps.Items[TOKEN_CACHE_KEY] = Convert.ToBase64String(Serialize());
+                _authProps.Items[TOKEN_CACHE_KEY] = Convert.ToBase64String(SerializeAdalV3());
         }
 
         private void AfterAccessNotificationWithContext(TokenCacheNotificationArgs args)
