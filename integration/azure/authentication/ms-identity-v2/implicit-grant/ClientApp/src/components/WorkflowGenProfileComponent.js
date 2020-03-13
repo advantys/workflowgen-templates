@@ -31,8 +31,8 @@ class WorkflowGenProfile extends Component {
             </tr>
           </thead>
           <tbody>
-            {Object.entries(user).map(([key, value]) => (
-              <tr>
+            {Object.entries(user).map(([key, value], index) => (
+              <tr key={index}>
                 <td>{key}</td>
                 <td>{value}</td>
               </tr>

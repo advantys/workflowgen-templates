@@ -2,6 +2,10 @@ import uuidV4 from 'uuid/v4';
 import jwtDecode from 'jwt-decode';
 
 import Configuration from '../models/Configuration';
+import {
+  validateTokenSignature,
+  verifyAtHash
+} from '../models/CryptoHelper';
 
 export const ActionTypes = {
   RECEIVE_USER_TYPE: 'RECEIVE_USER_TYPE',
@@ -46,8 +50,8 @@ export const ActionCreators = {
       response_type: 'id_token token',
       client_id: config.clientId,
       redirect_uri: config.redirectUri,
-      scope: 'openid profile email',
-      resource: config.resource,
+      scope: `openid profile email ${config.resource}/default`,
+      audience: config.resource,
       state,
       nonce
     })
@@ -68,12 +72,11 @@ export const ActionCreators = {
     window.location = requestUrl;
   },
   handleCallback: () => async dispatch => {
-    const alreadyHandled = window.localStorage.getItem('alreadyHandled') === 'true';
-
-    if (alreadyHandled) {
+    if (window.localStorage.getItem('alreadyHandled') === 'true') {
       return;
     }
 
+    const config = await Configuration.load();
     const state = window.localStorage.getItem('state');
     const nonce = window.localStorage.getItem('nonce');
     const hash = window.location.hash
@@ -105,37 +108,12 @@ export const ActionCreators = {
       throw new Error('Invalid nonce in id token.');
     }
 
-    const res = await (await window.fetch('api/Crypto/VerifyToken', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({ token: hash.id_token })
-    })).json();
-
-    if (!res.result) {
+    if (!(await validateTokenSignature(hash.id_token, config.metadataUrl))) {
       throw new Error('Id token verification failed.');
     }
 
-    if (idToken.at_hash) {
-      const resAtHash = await (await window.fetch('api/Crypto/VerifyAtHash', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          access_token: hash.access_token,
-          at_hash: idToken.at_hash
-        })
-      })).json();
-
-      if (resAtHash.error) {
-        throw new Error(resAtHash.error_description || resAtHash.error);
-      }
-
-      if (!resAtHash.result) {
-        throw new Error('Id token at_hash verification failed.');
-      }
+    if (idToken.at_hash && !(await verifyAtHash(idToken.at_hash, hash.access_token))) {
+      throw new Error('Id token at_hash verification failed.');
     }
 
     window.localStorage.setItem('state', '');
@@ -152,6 +130,7 @@ export const ActionCreators = {
     });
   },
   logout: () => async dispatch => {
+    console.log('Logout not implemented');
   }
 };
 

@@ -4,7 +4,7 @@ export default class Configuration {
   }
 
   get metadataUrl () {
-    return `${this.authority}/.well-known/openid-configuration`;
+    return `${this.authority}/v2.0/.well-known/openid-configuration`;
   }
 
   constructor (config) {

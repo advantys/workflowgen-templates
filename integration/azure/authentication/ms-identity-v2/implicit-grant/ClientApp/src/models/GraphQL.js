@@ -6,7 +6,7 @@ export const GraphQLContext = React.createContext();
 export function buildGraphQLClient (endpoint, accessToken) {
   return new GraphQLClient(endpoint, {
     headers: {
-      'Authorization': `Bearer ${accessToken}`
+      Authorization: `Bearer ${accessToken}`
     }
   });
 }
