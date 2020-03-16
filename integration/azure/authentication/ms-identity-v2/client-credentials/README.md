@@ -5,7 +5,7 @@ with Azure Active Directory and get an access token to request WorkflowGen's
 GraphQL API.
 
 ## Prerequisites
-1. .NET core SDK 2.2
+1. .NET core SDK 3.1
 1. Make sure to have a valid WorkflowGen licence and serial number.
 1. Make sure to have access to an Azure subscription.
 1. Make sure to have a WorkflowGen server set up with OIDC authentication with
@@ -15,7 +15,7 @@ Azure AD.
     guide for information and instructions.
 
 ## Technologies
-This example uses ASP.NET Core 2.2 with the following libraries:
+This example uses ASP.NET Core 3.1 with the following libraries:
 
 | Library | Description |
 | --- | --- |
@@ -43,7 +43,7 @@ Azure AD using the Azure CLI command line tools.
 ```powershell
 # Replace `WorkflowGen GraphQL API` with the name of the registered WorkflowGen
 # GraphQL API application including the backticks if you named it something else.
-$webApiApp = & az ad app list `
+$webApiApp = az ad app list `
     --query '[?displayName == `WorkflowGen GraphQL API`] | [0]' `
     | ConvertFrom-Json `
     | Select-Object -First 1
@@ -51,7 +51,7 @@ $password = [guid]::NewGuid().ToString()
 $webAppUrl = "http://localhost:8080"
 
 # Create the application registration.
-$webAppClient = & az ad app create `
+$webAppClient = az ad app create `
     --display-name "My console app" `
     --homepage $webAppUrl `
     --identifier-uris $webAppUrl `
@@ -61,16 +61,16 @@ $webAppClient = & az ad app create `
     | ConvertFrom-Json
 
 # Create a service principal for the registration
-& az ad sp create --id $webAppClient.appId
+az ad sp create --id $webAppClient.appId
 
 # Add required permissions for the GraphQL API access
-& az ad app permission add `
+az ad app permission add `
     --id $webAppClient.appId `
     --api $webApiApp.appId `
     --api-permissions "$($webApiApp.oauth2Permissions.id)=Scope"
 
 # Grant the required permissions for the GraphQL API Access
-& az ad app permission grant `
+az ad app permission grant `
     --api $webApiApp.appId `
     --id $webAppClient.appId
 ```
@@ -94,27 +94,22 @@ will get an access token that is a valid JWT and that can be transmitted to
 the API for authorization.
 
 1. In Azure AD, go to the **App Registrations** section and click the
-**New application registration** button.
+**New registration** button.
 1. Enter the following information:
 
     Name: `My console app`
-    Application Type: `Web app / API`
-    Sign-on URL: `http://localhost:8080`
 
-1. When you're done, click on the **Create** button.
+1. When you're done, click on the **Register** button.
 
 You now have registered this example application. You now need to finish
 configuring it in order to get the auhtentication working properly.
 
-1. Go to the **My console app** registered application page in Azure AD.
-1. Copy the Application ID, which you'll need later. This is the application's
+1. On the Overview section, copy the Application ID, which you'll need later. This is the application's
 Client ID.
-1. Click on the **Settings** button.
-1. Go to the **Keys** section.
-1. In the `Passwords` sub-section, add a line with the following information:
+1. Go to the **Certificates & secrets** section.
+1. In the `Client secrets` sub-section, add a line with the following information:
 
     Description: `secret`
-    Expires: `Never expires`
     Value: A random GUID (see the following note)
 
     **How to generate a GUID**
@@ -128,13 +123,12 @@ Client ID.
 1. Click **Save**.
 1. Copy the value that's generated after the save. It is the the application's
 Client Secret.
-1. Return to the sections list and go to the **Required permissions** section.
-1. Click **Add** then **Select an API**.
+1. Go to the **API permissions** section.
+1. Click **Add a permission** and then the **My APIs** tab.
 1. Search for the WorkflowGen GraphQL API application that you configured,
-select it, and click the **Select** button.
-1. In the **Select permissions** section, check all checkboxes, then click the
-**Select** button.
-1. Click the **Done** button.
+select it.
+1. Click **Delegated permissions** and check the **default** permission.
+1. Click the **Add permissions** button.
 
 You should now see the WorkflowGen GraphQL API in the list of required
 permissions for this example application.
@@ -179,7 +173,7 @@ The configuration of the example is straightforward and takes a lot less steps
 than configuring it in Azure AD.
 
 ### Prerequisites
-1. Make sure to have installed the .NET core SDK version 2.2. The `dotnet`
+1. Make sure to have installed the .NET core SDK version 3.1. The `dotnet`
 command line tool should be available in a terminal.
 
 Optionally, you can install Visual Studio Code to run and debug this example.

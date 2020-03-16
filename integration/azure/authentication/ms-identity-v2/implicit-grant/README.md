@@ -1,11 +1,11 @@
 # OpenID Connect Example with Single Page Application
 ## Overview
 This sample application uses the OpenID Connect (OIDC) protocol to authenticate
-with Azure Active Directory (Azure V1) and get an access token to request the WorkflowGen
+with Azure Active Directory (Microsoft Identity Platform) and get an access token to request the WorkflowGen
 GraphQL API.
 
 ## Prerequisites
-1. .NET core SDK 2.2
+1. .NET core SDK 3.1
 1. NPM version 6.x or up.
 1. Make sure to have a valid WorkflowGen licence and serial number.
 1. Make sure to have access to an Azure subscription.
@@ -46,14 +46,14 @@ Azure AD using the Azure CLI command line tools.
 ```powershell
 # Replace `WorkflowGen GraphQL API` with the name of the registered WorkflowGen
 # GraphQL API application including the backticks if you named it something else.
-$webApiApp = & az ad app list `
+$webApiApp = az ad app list `
     --query '[?displayName == `WorkflowGen GraphQL API`] | [0]' `
     | ConvertFrom-Json `
     | Select-Object -First 1
 $webAppUrl = "http://localhost:5001"
 
 # Create the application registration.
-$webAppClient = & az ad app create `
+$webAppClient = az ad app create `
     --display-name "My React SPA" `
     --homepage $webAppUrl `
     --identifier-uris $webAppUrl `
@@ -62,22 +62,22 @@ $webAppClient = & az ad app create `
     | ConvertFrom-Json
 
 # Create a service principal for the registration
-& az ad sp create --id $webAppClient.appId
+az ad sp create --id $webAppClient.appId
 
 # Add required permissions for the GraphQL API access
-& az ad app permission add `
+az ad app permission add `
     --id $webAppClient.appId `
     --api $webApiApp.appId `
     --api-permissions "$($webApiApp.oauth2Permissions.id)=Scope"
 
 # Grant the required permissions for the GraphQL API Access
-& az ad app permission grant `
+az ad app permission grant `
     --api $webApiApp.appId `
     --id $webAppClient.appId
 
 # Give consent on behalf of organization. The consent form is not presented
 # for implicit grant flow.
-& az ad app permission admin-consent `
+az ad app permission admin-consent `
     --id $webAppClient.appId
 ```
 
